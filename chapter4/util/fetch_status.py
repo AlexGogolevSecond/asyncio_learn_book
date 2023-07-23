@@ -1,0 +1,17 @@
+from aiohttp import ClientSession
+from util import async_timed
+import asyncio
+
+
+@async_timed()
+async def fetch_status(session: ClientSession, url: str, delay: int = 0) -> int:
+    await asyncio.sleep(delay)
+    async with session.get(url) as result:
+        return result.status
+ 
+   
+    # try:
+    #     async with session.get(url) as result:
+    #         return result.status
+    # except Exception as ex:
+    #     print(f'!!! {url}: ' + str(ex))
