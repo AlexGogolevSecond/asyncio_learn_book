@@ -8,6 +8,7 @@ async def sl(n: int) -> None:
 
 async def main():
     start = perf_counter()
+
     task1 = sl(5)
     task2 = sl(3)
 
