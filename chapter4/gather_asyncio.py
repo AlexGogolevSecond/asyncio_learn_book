@@ -11,8 +11,11 @@ async def main():
 
     task1 = sl(5)
     task2 = sl(3)
+    task3 = sl(1)
+    task4 = sl(4)
+    task5 = sl(3)
 
-    await asyncio.gather(task1, task2)
+    await asyncio.gather(task1, task2, task3, task4, task5)
 
     print(perf_counter() - start)
 
