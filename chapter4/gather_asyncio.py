@@ -3,6 +3,8 @@ from time import perf_counter
 
 
 async def sl(n: int) -> None:
+    # if n == 1:
+    #     raise Exception
     await asyncio.sleep(n)
 
 
