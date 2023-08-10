@@ -17,7 +17,7 @@ async def main():
         for done_task in done:
             result = await done_task
             print(result)
-        
+
         for pending_task in pending:
             pending_task.cancel()
 
