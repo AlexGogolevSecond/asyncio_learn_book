@@ -9,7 +9,8 @@ from util import fetch_status
 async def main():
     async with aiohttp.ClientSession() as session:
         good_request = fetch_status(session, 'https://www.example.com')
-        bad_request = fetch_status(session, 'python://bad')
+        # bad_request = fetch_status(session, 'python://bad')
+        bad_request = fetch_status(session, 'https22://www.example.com')
         fetchers = [asyncio.create_task(good_request),
                     asyncio.create_task(bad_request)]
         done, pending = await asyncio.wait(fetchers)
