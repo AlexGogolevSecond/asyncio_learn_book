@@ -15,7 +15,7 @@ async def main():
         fetchers = [asyncio.create_task(first_request),
                     asyncio.create_task(second_request),
                     asyncio.create_task(third_request)]
-        done, pending = await asyncio.wait(fetchers)
+        done, pending = await asyncio.wait(fetchers, return_when=asyncio.ALL_COMPLETED)
         print(f'Число завершившихся задач: {len(done)}')
         print(f'Число ожидающих задач: {len(pending)}')
         for done_task in done:
