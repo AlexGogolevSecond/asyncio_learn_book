@@ -20,8 +20,8 @@ async def main():
             else:
                 logging.error("При выполнении запроса возникло исключение", 
                             exc_info=done_task.exception())
-            for pending_task in pending:
-                pending_task.cancel()
+        for pending_task in pending:
+            pending_task.cancel()
 
 
 asyncio.run(main())      
