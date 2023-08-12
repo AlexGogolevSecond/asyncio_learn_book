@@ -59,8 +59,8 @@ async def main():
                                   brand_id_end=204,
                                   count_products_to_create=1000)
 
-    # await connection.executemany("INSERT INTO product VALUES(DEFAULT, $1, $2)",
-                                #  product_tuples)
+    await connection.executemany("INSERT INTO product VALUES(DEFAULT, $1, $2)",
+                                 product_tuples)
 
     sku_tuples = gen_skus(product_id_start=2,
                           product_id_end=1001,
