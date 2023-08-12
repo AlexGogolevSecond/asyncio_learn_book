@@ -14,7 +14,7 @@ def count(count_to: int) -> int:
 
 
 if __name__ == "__main__":
-    start_time = time.time()
+    start_time = time.perf_counter()
     to_one_hundred_million = Process(target=count, args=(10000000,))
     to_two_hundred_million = Process(target=count, args=(20000000,))
 
@@ -24,5 +24,5 @@ if __name__ == "__main__":
     to_one_hundred_million.join()
     to_two_hundred_million.join()
     print('lalala')
-    end_time = time.time()
+    end_time = time.perf_counter()
     print(f'Полное время работы {end_time-start_time}')
