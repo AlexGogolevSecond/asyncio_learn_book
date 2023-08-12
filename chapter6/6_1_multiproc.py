@@ -3,11 +3,11 @@ from multiprocessing import Process
 
 
 def count(count_to: int) -> int:
-    start = time.time()
+    start = time.perf_counter()
     counter = 0
     while counter < count_to:
         counter = counter + 1
-    end = time.time()
+    end = time.perf_counter()
     print(f'Закончен подсчет до {count_to} за время {end-start}')
 
     return counter
