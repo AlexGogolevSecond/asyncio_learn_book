@@ -32,8 +32,9 @@ async def main():
                                    max_size=2
                                    ) as pool:
 
-        await asyncio.gather(query_product(pool),
-                             query_product(pool),
-                             query_product(pool))
+        res = await asyncio.gather(query_product(pool),
+                                   query_product(pool),
+                                   query_product(pool))
+        print(res)
 
 asyncio.run(main())
