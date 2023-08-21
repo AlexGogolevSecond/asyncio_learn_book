@@ -1,14 +1,32 @@
 from multiprocessing import Pool
+import time
 
 
 def say_hello(name: str) -> str:
     return f'Привет, {name}'
 
 
+def count(count_to: int) -> int:
+    start = time.perf_counter()
+    counter = 0
+    while counter < count_to:
+        counter = counter + 1
+    end = time.perf_counter()
+    print(f'Закончен подсчет до {count_to} за время {end-start}')
+
+    return counter
+
+
 if __name__ == "__main__":
+    st = time.perf_counter()
     with Pool() as process_pool:
-        hi_jeff = process_pool.apply_async(say_hello, args=('Jeff',))
-        print(type(hi_jeff))
-        hi_john = process_pool.apply_async(say_hello, args=('John',))
-        print(hi_jeff.get())
-        print(hi_john.get())
+        # hi_jeff = process_pool.apply(say_hello, args=('Jeff',))
+        # hi_john = process_pool.apply(say_hello, args=('John',))
+        # print(hi_jeff)
+        # print(hi_john)
+        p1 = process_pool.apply_async(count, args=(10000000,))
+        p2 = process_pool.apply_async(count, args=(20000000,))
+        print(f'{p1.get()=}')
+        print(f'{p2.get()=}')
+    
+    print(time.perf_counter() - st)
