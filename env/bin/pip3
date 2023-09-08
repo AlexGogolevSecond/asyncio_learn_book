@@ -1,4 +1,4 @@
-#!/home/alex/py_tmp/asyncio_learn_book/env/bin/python3.11
+#!/home/alex/py_tmp/asyncio_book/asyncio_learn_book/env/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
