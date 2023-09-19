@@ -7,7 +7,9 @@ import time
 # @async_timed()
 async def main():
     async with aiohttp.ClientSession() as session:
-        urls = ['https://example.com' for _ in range(1000)]
+        # url = 'https://example.com'
+        url = 'https://profi-mag.com/'
+        urls = [url for _ in range(1000)]
         requests = [fetch_status(session, url) for url in urls]
         await asyncio.gather(*requests)
         # print(status_codes)
