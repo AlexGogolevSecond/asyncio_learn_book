@@ -22,3 +22,4 @@ if __name__ == '__main__':
     print(time.perf_counter() - st)
 
 
+# curl -X 'GET' 'http://127.0.0.1:8000/get_info?n=4' -H 'accept: application/json'
