@@ -14,8 +14,11 @@ async def fetch_status(session: ClientSession, url: str) -> int:
 async def main():
     async with aiohttp.ClientSession() as session:
         # url = 'https://example.com'
-        url = 'http://127.0.0.1:8000/get_info?n=2'
-        urls = [url for _ in range(1000)]
+        import random
+        delay = random.randint(1, 5)
+        #url = f'http://127.0.0.1:8000/get_info?n={delay}'
+        #urls = [url for _ in range(1000)]
+        urls = [f'http://127.0.0.1:8000/get_info?n={random.randint(1, 5)}' for _ in range(1000)]
         requests = [fetch_status(session, url) for url in urls]
         await asyncio.gather(*requests)
         # print(status_codes)
