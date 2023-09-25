@@ -1,0 +1,18 @@
+version: "3.0"
+services:
+  db:
+    container_name: "db"
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=alex
+      - POSTGRES_PASSWORD=614007
+      - POSTGRES_DB=somebase
+    ports:
+      - "5432:5432"
+        # первая часть наш комп, вторая - в контейнере - вроде как  
+    networks:
+      - custom
+networks:
+  custom:
+    driver: bridge
