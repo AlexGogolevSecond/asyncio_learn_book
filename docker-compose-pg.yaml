@@ -16,3 +16,5 @@ services:
 networks:
   custom:
     driver: bridge
+
+# docker-compose -f docker-compose-local.yaml up -d
