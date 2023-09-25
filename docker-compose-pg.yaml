@@ -9,7 +9,7 @@ services:
       - POSTGRES_PASSWORD=614007
       - POSTGRES_DB=somebase
     ports:
-      - "5432:5432"
+      - "6432:5432"
         # первая часть наш комп, вторая - в контейнере - вроде как  
     networks:
       - custom
