@@ -2,12 +2,14 @@ import asyncio
 import asyncpg
 
 
+# Марка
 CREATE_BRAND_TABLE = """
     CREATE TABLE IF NOT EXISTS brand(
     brand_id SERIAL PRIMARY KEY,
     brand_name TEXT NOT NULL
     );"""
 
+# Товар
 CREATE_PRODUCT_TABLE = """
     CREATE TABLE IF NOT EXISTS product(
     product_id SERIAL PRIMARY KEY,
