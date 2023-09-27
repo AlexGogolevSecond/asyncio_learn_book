@@ -1,2 +1,2 @@
 --explain
-select * FROM product_color;
+select * FROM brand;

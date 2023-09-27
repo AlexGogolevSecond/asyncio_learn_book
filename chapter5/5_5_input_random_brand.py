@@ -3,12 +3,20 @@ import asyncio
 from typing import List, Tuple, Union, Optional
 from random import sample
 import os
-from util.utils import load_common_words
+# from util.utils import load_common_words
 
+
+def load_common_words() -> List[str]:
+    file_name = 'common_words.txt'
+    current_folder = os.path.dirname(os.path.abspath(__file__))
+    file_path = os.path.join(current_folder, f'{file_name }')
+
+    with open(file_path, 'r', encoding='utf-8') as common_words:
+        return common_words.readlines()
 
 
 def generate_brand_names(words: List[str]) -> List[Tuple[Optional[str]]]:
-    res = [(words[index].replace('n', '').strip(),) for index in sample(range(100), 100)]
+    res = [(words[index].replace('n', '').strip(), ) for index in sample(range(100), 100)]
     return res
 
 
