@@ -43,20 +43,20 @@ CREATE_SKU_TABLE = """
     );"""
 
 COLOR_INSERT = """
-    INSERT INTO product_color VALUES(1, 'Blue');
-    INSERT INTO product_color VALUES(2, 'Black');
+    INSERT INTO product_color VALUES (1, 'Blue');
+    INSERT INTO product_color VALUES (2, 'Black');
     """
 
 SIZE_INSERT = """
-    INSERT INTO product_size VALUES(1, 'Small');
-    INSERT INTO product_size VALUES(2, 'Medium');
-    INSERT INTO product_size VALUES(3, 'Large');
+    INSERT INTO product_size VALUES (1, 'Small');
+    INSERT INTO product_size VALUES (2, 'Medium');
+    INSERT INTO product_size VALUES (3, 'Large');
     """
 
 
 async def main():
     connection = await asyncpg.connect(host='127.0.0.1',
-                                       port=5432,
+                                       port=7432,
                                        user='alex',
                                        database='products',
                                        password='614007')
