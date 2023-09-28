@@ -14,17 +14,30 @@ def load_common_words() -> List[str]:
         return common_words.readlines()
 
 
-def gen_products(common_words: List[str],
+async def gen_products(connection,
+                 common_words: List[str],
                  brand_id_start: int,
                  brand_id_end: int,
                  count_products_to_create: int) -> List[Tuple[str, int]]:
+    
+    # не будем завязываться на пееданны параметры brand_id_start и brand_id_end - получим
+    # их из БД
+
+    min_brand_id, max_brand_id = await connection.fetchrow('''
+        SELECT 
+            MIN(brand_id),
+            MAX(brand_id)
+        FROM brand
+    ''')
+
     products = []
     # brand_ids = []
     for _ in range(count_products_to_create):
         description = [common_words[index].replace('\n', '').strip() for index 
                        in sample(range(1000), 10)]
-
-        brand_id = randint(brand_id_start, brand_id_end)
+        
+        brand_id = randint(min_brand_id, max_brand_id) if all(min_brand_id, max_brand_id)\
+                                                       else randint(brand_id_start, brand_id_end)
         # while brand_id in brand_ids:
         #     brand_id = randint(brand_id_start, brand_id_end)
 
@@ -49,12 +62,13 @@ def gen_skus(product_id_start: int,
 async def main():
     common_words = load_common_words()
     connection = await asyncpg.connect(host='127.0.0.1',
-                                       port=5432,
+                                       port=7432,
                                        user='alex',
                                        database='products',
                                        password='614007')
-
-    product_tuples = gen_products(common_words,
+    
+    product_tuples = await gen_products(connection,
+                                  common_words,
                                   brand_id_start=105,
                                   brand_id_end=204,
                                   count_products_to_create=1000)
