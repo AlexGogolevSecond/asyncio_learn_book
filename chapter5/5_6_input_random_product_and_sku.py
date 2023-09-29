@@ -35,8 +35,8 @@ async def gen_products(connection,
     for _ in range(count_products_to_create):
         description = [common_words[index].replace('\n', '').strip() for index 
                        in sample(range(1000), 10)]
-        
-        brand_id = randint(min_brand_id, max_brand_id) if all(min_brand_id, max_brand_id)\
+
+        brand_id = randint(min_brand_id, max_brand_id) if all([min_brand_id, max_brand_id])\
                                                        else randint(brand_id_start, brand_id_end)
         # while brand_id in brand_ids:
         #     brand_id = randint(brand_id_start, brand_id_end)
