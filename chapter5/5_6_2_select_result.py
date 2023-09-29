@@ -31,7 +31,7 @@ async def main():
                                        user='alex',
                                        database='products',
                                        password='614007')
-    
+
     result = await connection.fetch(query)
     a = 0
 
