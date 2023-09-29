@@ -19,7 +19,7 @@ product_query = """
 
 async def main():
     connection = await asyncpg.connect(host='127.0.0.1',
-                                       port=5432,
+                                       port=7432,
                                        user='alex',
                                        database='products',
                                        password='614007')
