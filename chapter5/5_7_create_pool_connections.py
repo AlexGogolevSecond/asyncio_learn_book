@@ -1,5 +1,6 @@
 import asyncio
 import asyncpg
+import time
 
 
 product_query = """
@@ -31,10 +32,20 @@ async def main():
                                    min_size=2,
                                    max_size=2
                                    ) as pool:
+        start = time.perf_counter()
+
+        #res = await query_product(pool)
+        #res = await query_product(pool)
+        #res = await query_product(pool)
+
 
         res = await asyncio.gather(query_product(pool),
                                    query_product(pool),
                                    query_product(pool))
+                                           
+        finish = time.perf_counter()
         print(res)
+        print('time: {}'.format(finish - start))
+
 
 asyncio.run(main())
