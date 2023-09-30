@@ -3,7 +3,7 @@ import asyncpg
 import time
 
 
-product_query = """
+PRODUCT_QUERY = """
     SELECT
     p.product_id,
     p.product_name,
@@ -15,12 +15,13 @@ product_query = """
     JOIN sku as s on s.product_id = p.product_id
     JOIN product_color as pc on pc.product_color_id = s.product_color_id
     JOIN product_size as ps on ps.product_size_id = s.product_size_id
-    WHERE p.product_id = 175"""
+    WHERE p.product_id = 175
+"""
 
 
 async def query_product(pool):
-    async with pool.acquire() as connection:
-        return await connection.fetchrow(product_query)
+    async with pool.acquire() as connection:  # pool.acquire() - захват подключения из пула
+        return await connection.fetchrow(PRODUCT_QUERY)
 
 
 async def main():
@@ -29,9 +30,9 @@ async def main():
                                    user='alex',
                                    database='products',
                                    password='614007',
-                                   min_size=2,
-                                   max_size=2
-                                   ) as pool:
+                                   min_size=6,
+                                   max_size=6
+                                   ) as pool:  # !!!!! тут двоеточие, это контекстный менеджер
         start = time.perf_counter()
 
         #res = await query_product(pool)
@@ -42,10 +43,10 @@ async def main():
         res = await asyncio.gather(query_product(pool),
                                    query_product(pool),
                                    query_product(pool))
-                                           
+
         finish = time.perf_counter()
         print(res)
-        print('time: {}'.format(finish - start))
+        print(f'time: {finish - start}')
 
 
 asyncio.run(main())
