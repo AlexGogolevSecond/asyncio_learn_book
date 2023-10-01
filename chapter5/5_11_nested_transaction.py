@@ -5,7 +5,7 @@ import logging
 
 async def main():
     connection = await asyncpg.connect(host='127.0.0.1',
-                                       port=5432,
+                                       port=7432,
                                        user='postgres',
                                        database='products',
                                        password='password')
