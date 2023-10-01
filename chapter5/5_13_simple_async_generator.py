@@ -1,5 +1,6 @@
 import asyncio
 #from util import delay, async_timed
+import time
 
 
 async def delay(delay_seconds: int) -> int:
@@ -23,4 +24,6 @@ async def main():
         print(f'Получено число {number}')
 
 
+start = time.perf_counter()
 asyncio.run(main())
+print(f'{time.perf_counter() - start}')
