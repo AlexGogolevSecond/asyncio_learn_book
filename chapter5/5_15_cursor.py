@@ -4,10 +4,10 @@ import asyncpg
 
 async def main():
     connection = await asyncpg.connect(host='127.0.0.1',
-                                       port=5432,
-                                       user='postgres',
+                                       port=7432,
+                                       user='alex',
                                        database='products',
-                                       password='password')
+                                       password='614007')
 
     query = 'SELECT product_id, product_name FROM product'
     async with connection.transaction():
