@@ -12,6 +12,7 @@ async def delay(delay_seconds: int) -> int:
 
 async def positive_integers_async(until: int):
     for integer in range(1, until):
+        # await delay(3)
         await delay(integer)
         yield integer
 

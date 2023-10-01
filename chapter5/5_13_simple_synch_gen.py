@@ -12,3 +12,5 @@ positive_iterator = positive_integers(2)
 # 2-й способ
 for el in positive_iterator:
     print(el)
+
+a = 0
