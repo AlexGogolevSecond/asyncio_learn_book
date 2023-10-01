@@ -35,12 +35,12 @@ async def query_products_concurrently(pool, queries):
 
 async def main():
     async with asyncpg.create_pool(host='127.0.0.1',
-                                   port=5432,
+                                   port=7432,
                                    user='alex',
                                    password='614007',
                                    database='products',
-                                   min_size=2,
-                                   max_size=2) as pool:
+                                   min_size=6,
+                                   max_size=26) as pool:
         st1 = time.perf_counter()
         await query_products_synchronously(pool, 10000)
         print(time.perf_counter() - st1)
