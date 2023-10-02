@@ -10,7 +10,7 @@ async def main():
                                        password='614007')
 
     query = 'SELECT product_id, product_name FROM product'
-    async with connection.transaction():
+    async with connection.transaction():  # обязательно д.б. транзакция
         async for product in connection.cursor(query):  # выбираем по 50 (по умолчанию https://magicstack.github.io/asyncpg/current/api/index.html)
             print(product)
 
