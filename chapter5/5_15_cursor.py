@@ -11,10 +11,11 @@ async def main():
 
     query = 'SELECT product_id, product_name FROM product'
     async with connection.transaction():
-        async for product in connection.cursor(query):
+        async for product in connection.cursor(query):  # выбираем по одному
             print(product)
 
     await connection.close()
 
-
+# тут непонятно - получается, используя async for мы не загоняем в память все результаты запроса,
+# а получаем их по одному
 asyncio.run(main())
