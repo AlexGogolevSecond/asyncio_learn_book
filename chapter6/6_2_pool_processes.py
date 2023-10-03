@@ -24,7 +24,7 @@ if __name__ == "__main__":
         # hi_john = process_pool.apply(say_hello, args=('John',))
         # print(hi_jeff)
         # print(hi_john)
-        p1 = process_pool.apply(count, args=(10000000,))
+        p1 = process_pool.apply(count, args=(10000000,))  # НО, метод apply блокирующий, поэтому не подходит
         p2 = process_pool.apply(count, args=(20000000,))
         print(f'{p1=}')
         print(f'{p2=}')
