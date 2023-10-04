@@ -13,7 +13,9 @@ def count(count_to: int) -> int:
 
 
 if __name__ == "__main__":
+    st = time.perf_counter()
     with ProcessPoolExecutor() as process_pool:
-        numbers = [100000000, 1, 3, 5, 22]
+        numbers = [100_000_000, 1, 3, 5, 22]
         for result in process_pool.map(count, numbers):
             print(result)
+    print(f'{time.perf_counter() - st}')
