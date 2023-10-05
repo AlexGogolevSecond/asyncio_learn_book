@@ -18,4 +18,4 @@ if __name__ == "__main__":
         numbers = [100_000_000, 1, 3, 5, 22]
         for result in process_pool.map(count, numbers):
             print(result)
-    print(f'{time.perf_counter() - st}')
+    print(f'итого: {time.perf_counter() - st}')
