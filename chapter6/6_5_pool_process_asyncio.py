@@ -8,7 +8,7 @@ from typing import List
 def count(count_to: int) -> int:
     counter = 0
     while counter < count_to:
-        counter = counter + 1
+        counter += 1
 
     return counter
 
