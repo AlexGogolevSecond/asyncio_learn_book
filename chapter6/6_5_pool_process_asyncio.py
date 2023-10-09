@@ -7,6 +7,7 @@ from time import perf_counter
 
 
 def count(count_to: int) -> int:
+    '''т.е. метод м.б. даже не синхронным'''    
     start = perf_counter()
     counter = 0
     while counter < count_to:
