@@ -13,6 +13,7 @@ def count(count_to: int) -> int:
         counter += 1
     end = perf_counter()
     print(f'Закончен подсчет до {count_to} за время {end-start}')
+    return counter
 
 
 async def main():
@@ -25,7 +26,7 @@ async def main():
             call_coros.append(loop.run_in_executor(process_pool, call))
 
         results = await asyncio.gather(*call_coros)
-
+        print('перед циклом results')
         for result in results:
             print(result)
 
