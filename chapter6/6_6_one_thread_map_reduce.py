@@ -23,7 +23,7 @@ def merge_dictionaries(first: Dict[str, int], second: Dict[str, int]) -> Dict[st
             merged[key] = second[key]
     return merged
 
-lines = ["I know what I know",
+lines = ["I know I what I know",
          "I know that I know",
          "I don't know much",
          "They don't know much"]
@@ -33,4 +33,3 @@ for result in mapped_results:
     print(result)
 
 print(functools.reduce(merge_dictionaries, mapped_results))
-
