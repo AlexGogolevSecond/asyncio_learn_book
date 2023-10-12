@@ -1,7 +1,7 @@
 import time
 import os
 
-file_size = os.path.getsize('chapter6/googlebooks-eng-all-1gram-20120701-a')
+file_size = os.path.getsize('chapter6/googlebooks-eng-all-1gram-20120701-a')  # 1.68 Gb
 print(f'Размер файла: {file_size} байт ({round((file_size / (1024*1024*1024)), 2)} Гбайт)')
 
 st1 = time.time()
