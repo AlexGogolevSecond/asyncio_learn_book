@@ -20,7 +20,7 @@ def count(count_to: int) -> int:
 async def main():
     with ProcessPoolExecutor() as process_pool:
         loop: AbstractEventLoop = asyncio.get_running_loop()
-        nums = [1, 22, 100_000_000, 5, 3]
+        nums = [1_000_000, 22_000_000, 100_000_000, 5_000_000, 3_000_000]
         calls: List[partial[int]] = [partial(count, num) for num in nums]
         call_coros = []
         for call in calls:
