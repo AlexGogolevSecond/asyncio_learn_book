@@ -1,8 +1,11 @@
 import time
+import os
 
+file_size = os.path.getsize('chapter6/googlebooks-eng-all-1gram-20120701-a')
+print('Размер файла:', file_size, 'байт')
 
 freqs = {}
-with open('googlebooks-eng-all-1gram-20120701-a', encoding='utf-8') as f:
+with open('chapter6/googlebooks-eng-all-1gram-20120701-a', encoding='utf-8') as f:
     lines = f.readlines()
     start = time.time()
     for line in lines:
