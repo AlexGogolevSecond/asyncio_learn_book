@@ -14,7 +14,7 @@ with open('chapter6/googlebooks-eng-all-1gram-20120701-a', encoding='utf-8') as 
         word = data[0]
         count = int(data[2])
         if word in freqs:
-            freqs[word] = freqs[word] + count
+            freqs[word] += count
         else:
             freqs[word] = count
     end = time.time()
