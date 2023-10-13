@@ -4,7 +4,7 @@ import pdb; pdb.set_trace()
 
 
 with open('test_file_for_read.txt') as file:
-    file.readlines()
+    f = file.readlines()
     a = 0
 
 '''
