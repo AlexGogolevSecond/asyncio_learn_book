@@ -1,5 +1,6 @@
 import time
 import os
+import pdb; pdb.set_trace()
 
 
 with open('test_file_for_read.txt') as file:
