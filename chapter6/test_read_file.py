@@ -1,10 +1,10 @@
 import time
 import os
-import pdb; pdb.set_trace()
+#import pdb; pdb.set_trace()
 
 
-with open('test_file_for_read.txt') as file:
-    f = file.readlines()
+with open('chapter6/test_file_for_read.txt') as file:
+    f = file.readlines()  # тут весь файл загоняется в список (по переносу строки)
     a = 0
 
 '''
