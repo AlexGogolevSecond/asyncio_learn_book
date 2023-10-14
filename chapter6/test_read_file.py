@@ -2,10 +2,29 @@ import time
 import os
 #import pdb; pdb.set_trace()
 
+def get_chanck(file_object, chank=2):
+    while True:
+        data = file_object.read(chank)
+        if not data:
+            break
+        print(f'data: {data}')
+        yield data
+
 
 with open('chapter6/test_file_for_read.txt') as file:
-    f = file.readlines()  # тут весь файл загоняется в список (по переносу строки)
+    '''f = file.readlines()  # тут весь файл загоняется в список (по переносу строки)
     a = 0
+    '''
+    g = get_chanck(file)
+    for i in g:
+        print(i)
+
+    '''
+    # читаем по частям (побайтово)
+    f = file.read(3)
+    f = file.read(3)
+    a = 0
+    '''
 
 '''
 file_size = os.path.getsize('chapter6/googlebooks-eng-all-1gram-20120701-a')  # 1.68 Gb
