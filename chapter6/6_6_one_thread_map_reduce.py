@@ -7,7 +7,7 @@ def map_frequency(text: str) -> Dict[str, int]:
     frequencies = {}
     for word in words:
         if word in frequencies:
-            frequencies[word] = frequencies[word] + 1
+            frequencies[word] += 1
         else:
             frequencies[word] = 1
     return frequencies
