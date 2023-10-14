@@ -7,7 +7,7 @@ print(f'Размер файла: {file_size} байт ({round((file_size / (1024
 st1 = time.time()
 freqs = {}
 with open('chapter6/googlebooks-eng-all-1gram-20120701-a', encoding='utf-8') as f:
-    lines = f.readlines()
+    lines = f.readlines()  # это точно оптимально?
     start = time.time()
     for line in lines:
         data = line.split('\t')
