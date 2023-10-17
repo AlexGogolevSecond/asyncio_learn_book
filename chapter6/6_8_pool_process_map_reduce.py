@@ -31,7 +31,7 @@ def merge_dictionaries(first: Dict[str, int],
         else:
             merged[key] = second[key]
         return merged
-    
+
 
 async def main(partition_size: int):
     with open('chapter6/googlebooks-eng-all-1gram-20120701-a', encoding='utf-8') as f:
@@ -43,7 +43,7 @@ async def main(partition_size: int):
             for chunk in partition(contents, partition_size):
                 tasks.append(loop.run_in_executor(pool,
                                                   functools.partial(map_frequencies, chunk)))
-            
+
             intermediate_results = await asyncio.gather(*tasks)
             final_result = functools.reduce(merge_dictionaries,
             intermediate_results)
@@ -54,6 +54,3 @@ async def main(partition_size: int):
 
 if __name__ == "__main__":
     asyncio.run(main(partition_size=60000))
-
-
-
