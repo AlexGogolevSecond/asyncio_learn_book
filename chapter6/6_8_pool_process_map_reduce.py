@@ -45,8 +45,7 @@ async def main(partition_size: int):
                                                   functools.partial(map_frequencies, chunk)))
 
             intermediate_results = await asyncio.gather(*tasks)
-            final_result = functools.reduce(merge_dictionaries,
-            intermediate_results)
+            final_result = functools.reduce(merge_dictionaries, intermediate_results)
             print(f"Aardvark встречается {final_result['Aardvark']} раз.")
             end = time.time()
             print(f'Время MapReduce: {(end - start):.4f} секунд')
