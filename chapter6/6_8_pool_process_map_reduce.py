@@ -33,7 +33,7 @@ def merge_dictionaries(first: Dict[str, int],
         return merged
 
 
-async def main(partition_size: int):
+async def main(partition_size=60000):
     with open('chapter6/googlebooks-eng-all-1gram-20120701-a', encoding='utf-8') as f:
         contents = f.readlines()
         loop = asyncio.get_running_loop()
