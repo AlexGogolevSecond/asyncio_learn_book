@@ -48,7 +48,7 @@ async def main(partition_size=60000):
             intermediate_results = await asyncio.gather(*tasks)
             final_result = functools.reduce(merge_dictionaries, intermediate_results)
 
-            print(f"Aardvark встречается {final_result.get('Aardvark')} раз.")
+            print(f"Aardvark встречается {final_result.get('Aardvark_')} раз.")
             end = time.time()
             print(f'Время MapReduce: {(end - start):.4f} секунд')
 

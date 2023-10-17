@@ -22,10 +22,13 @@ row_count = 0
 
 print('before circle by csv_gen')
 for row in csv_gen:
+
+    # if 'ardvark' in row.lower():
+    #     a = 0
     row_count += 1
     if row_count % 1000000 == 0:
         print(f'row_count: {row_count}')
 
-print(f'csv_reader time: {time.perf_counter() - st}')  # ресурсоёмкий метод ~ 35 сек занимает; 
+print(f'csv_reader time: {time.perf_counter() - st}')  # ресурсоёмкий метод ~ 35 сек занимает;
                                                        # метод с генераторм (или выражение-генератор) ~ 346 сек.
 print(f"Row count is {row_count}")
