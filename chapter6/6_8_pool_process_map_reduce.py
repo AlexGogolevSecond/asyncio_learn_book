@@ -11,16 +11,23 @@ def partition(data: List, chunk_size: int) -> List:
 
 
 def map_frequencies(chunk: List[str]) -> Dict[str, int]:
-counter = {}
-for line in chunk:
-word, _, count, _ = line.split('\t')
-if counter.get(word):
-counter[word] = counter[word] + int(count)
-else:
-counter[word] = int(count)
-return counter
-def merge_dictionaries(first: Dict[str, int],
-second: Dict[str, int]) -> Dict[str, int]:
-merged = first
-for key in second:
-if key in merged:
+    counter = {}
+    for line in chunk:
+        word, _, count, _ = line.split('\t')
+        if counter.get(word):
+            counter[word] = counter[word] + int(count)
+        else:
+            counter[word] = int(count)
+    return counter
+
+
+def merge_dictionaries(first: Dict[str, int], 
+                       second: Dict[str, int]) -> Dict[str, int]:
+    merged = first
+    for key in second:
+        if key in merged:
+
+
+
+
+            
