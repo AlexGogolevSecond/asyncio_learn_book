@@ -27,7 +27,7 @@ def merge_dictionaries(first: Dict[str, int],
     merged = first
     for key in second:
         if key in merged:
-            merged[key] = merged[key] + second[key]
+            merged[key] += second[key]
         else:
             merged[key] = second[key]
         return merged
@@ -37,6 +37,7 @@ async def main(partition_size=60000):
     with open('chapter6/googlebooks-eng-all-1gram-20120701-a', encoding='utf-8') as f:
         contents = f.readlines()  # нафига всё грузить в память - тут теряется смысл оптимизации, хотя вроде как сама оптимизация
         # направлена на многопро
+        print(f'загрузили файл в память (как список строк); размер contents: {contents.__sizeof__()}')
         loop = asyncio.get_running_loop()
         tasks = []
         start = time.time()
@@ -47,8 +48,11 @@ async def main(partition_size=60000):
 
             intermediate_results = await asyncio.gather(*tasks)
             final_result = functools.reduce(merge_dictionaries, intermediate_results)
-
-            print(f"Aardvark встречается {final_result.get('Aardvark_')} раз.")
+            # print('-' *25 )
+            # print(final_result.keys())
+            # print('-' *25 )
+            #print(f"Aardvark встречается {final_result.get('Aardvark_')} раз.")  # AFFIX_
+            print(f"AFFIX_ встречается {final_result.get('AFFIX_')} раз.")
             end = time.time()
             print(f'Время MapReduce: {(end - start):.4f} секунд')
 
