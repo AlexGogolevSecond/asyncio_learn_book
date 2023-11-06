@@ -10,7 +10,7 @@ def count(count_to: int) -> int:
     start = time.perf_counter()
     counter = 0
     while counter < count_to:
-        counter = counter + 1
+        counter += 1
     end = time.perf_counter()
     print(f'Закончен подсчет до {count_to} за время {end-start}')
 
