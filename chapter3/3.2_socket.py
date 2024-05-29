@@ -17,7 +17,7 @@ try:
 
         for connection in connections:
             buffer = b''
-            while buffer[-1:] != b'\r\n':
+            while buffer[-1:] != b'\n':
                 data = connection.recv(2)
                 if not data:
                     break
