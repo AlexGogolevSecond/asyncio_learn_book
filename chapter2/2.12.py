@@ -10,6 +10,6 @@ async def main():
         print(f'{result=}')
     except asyncio.exceptions.TimeoutError:
         print('Тайм-аут!')
-        print(f'Задача была снята? {delay_task.cancelled()}')
+        print(f'Задача была снята? - {delay_task.cancelled()}')
 
 asyncio.run(main())
