@@ -1,3 +1,5 @@
+"""Снятие задачи по таймауту"""
+
 import asyncio
 from util import delay
 
