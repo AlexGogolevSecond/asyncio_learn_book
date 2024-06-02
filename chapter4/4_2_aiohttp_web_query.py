@@ -1,3 +1,4 @@
+"""Отправка веб-запроса с по­мощью aiohttp"""
 import asyncio
 import aiohttp
 from aiohttp import ClientSession
