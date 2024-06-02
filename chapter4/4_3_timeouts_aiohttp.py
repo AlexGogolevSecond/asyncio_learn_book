@@ -1,3 +1,4 @@
+"""Задание тайм-аутов в aiohttp"""
 import asyncio
 import aiohttp
 from aiohttp import ClientSession
