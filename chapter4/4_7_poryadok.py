@@ -1,3 +1,5 @@
+"""Завершение допускающих ожидание объектов не по порядку"""
+
 import asyncio
 from util import delay
 
