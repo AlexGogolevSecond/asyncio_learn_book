@@ -4,6 +4,8 @@ from aiohttp import ClientSession
 from util import async_timed
 from util import fetch_status
 
+"""return_when может иметь след. значения: 
+ALL_COM-PLETED, FIRST_EXCEPTION и FIRST_COMPLETED"""
 
 # @async_timed()
 async def main():
