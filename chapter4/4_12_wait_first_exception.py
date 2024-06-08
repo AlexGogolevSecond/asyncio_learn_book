@@ -13,8 +13,8 @@ async def main():
 
         done, pending = await asyncio.wait(fetchers,
                                            return_when=asyncio.FIRST_EXCEPTION)
-        print(f'Число завершившихся задач: {len(done)}')
-        print(f'Число ожидающих задач: {len(pending)}')
+        print(f'Число завершившихся задач: {len(done)}')  # == 1 - это з-ча, которая завершилась с исключением
+        print(f'Число ожидающих задач: {len(pending)}')  # == 2 - это те 2 з-чи с таймаутом 3
         for done_task in done:
             if done_task.exception() is None:
                 print(done_task.result())
