@@ -1,3 +1,5 @@
+"""если возникают исключения, то программа не падает и не нужно обрабатывать их через try/except"""
+
 import asyncio
 import aiohttp
 from aiohttp import ClientSession
@@ -22,3 +24,5 @@ async def main():
         print(f'Все результаты: {results}')
         print(f'Завершились успешно: {successful_results}')
         print(f'Завершились с исключением: {exceptions}')
+
+asyncio.run(main())
