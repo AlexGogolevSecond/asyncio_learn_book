@@ -14,8 +14,8 @@ async def fetch_status(session: ClientSession, url: str) -> int:
 async def main():
     async with aiohttp.ClientSession() as session:
         # 1 значение с временем - впн через мск, 2-й - Пермь
-        url = 'https://example.com'  # 3.8980 с    2.9833 с
-        # url = 'https://profi-mag.com/'  # 13.6216 с    exception after 140.2249 с
+        # url = 'https://example.com'  # 3.8980 с    2.9833 с
+        url = 'https://profi-mag.com/'  # 13.6216 с    exception after 140.2249 с
         # url = 'https://sbis.ru/'  # 9.5578 с    exception after 65.8625 с
         # url = 'https://ya.ru/'  # 8.3910 с    6.6704 с
         # url = 'https://mail.ru/'  # 7.6631 с    6.5571 с
