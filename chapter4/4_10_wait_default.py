@@ -13,7 +13,8 @@ async def main():
         fetchers = [asyncio.create_task(fetch_status(session, 'https://example.com')),
                     asyncio.create_task(fetch_status(session, 'https://example.com'))]
                     # asyncio.create_task(fetch_status(session, 'https22://example.com'))]
-        # НО!!! если при ALL_COMPLETED возникнет исключение, то оно никуда не денется и программа упадёт, видимо его нужно обрабатывать
+        # НО!!! если возникнет исключение (оно возникает при любом значении return_when),
+        # то оно никуда не денется и программа упадёт, видимо его нужно обрабатывать
 
         # try:
         done, pending = await asyncio.wait(fetchers)
