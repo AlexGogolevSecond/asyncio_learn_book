@@ -14,7 +14,9 @@ async def main():
         # try:
         done, pending = await asyncio.wait(fetchers)
         print(f'Число завершившихся задач: {len(done)}')
-        print(f'Число ожидающих задач: {len(pending)}')
+        print(f'Число ожидающих задач: {len(pending)}')  # в книге написано, что тут будет пуста, т.к. у нас тут по ум.
+                                                         # режим return_when == ALL_COMPLETED. а в этом случае asyncio.wait
+                                                         # не вернется, пока все не завершится
         for done_task in done:
             result = await done_task
             print(result)
