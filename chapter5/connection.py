@@ -1,0 +1,7 @@
+host='127.0.0.1'
+port=19432
+user='postgres'
+database='products'
+password='password'
+
+DATABASE_URL = f'postgresql://{user}:{password}@{host}:{port}'

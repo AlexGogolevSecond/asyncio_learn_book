@@ -1,13 +1,11 @@
 import asyncpg
 import asyncio
 
+from connection import DATABASE_URL
+
 
 async def main():
-    connection = await asyncpg.connect(host='127.0.0.1',
-                                       port=19432,
-                                       user='postgres',
-                                       database='products',
-                                       password='password')
+    connection = await asyncpg.connect(DATABASE_URL)
     version = connection.get_server_version()
     print(f'Подключено! Версия Postgres равна {version}')
     await connection.close()
