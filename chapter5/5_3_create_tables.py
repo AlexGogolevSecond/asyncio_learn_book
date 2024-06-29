@@ -1,6 +1,6 @@
 import asyncio
 import asyncpg
-# from connection import DATABASE_URL
+from connection import DATABASE_URL2
 
 
 # Марка
@@ -58,11 +58,12 @@ SIZE_INSERT = """
 
 
 async def main():
-    connection = await asyncpg.connect(host='127.0.0.1',
-                                       port=19432,
-                                       user='postgres',
-                                       database='products',
-                                       password='password')
+    # connection = await asyncpg.connect(host='127.0.0.1',
+    #                                    port=19432,
+    #                                    user='postgres',
+    #                                    database='products',
+    #                                    password='password')
+    connection = await asyncpg.connect(**DATABASE_URL)
     statements = [CREATE_BRAND_TABLE,
                   CREATE_PRODUCT_TABLE,
                   CREATE_PRODUCT_COLOR_TABLE,

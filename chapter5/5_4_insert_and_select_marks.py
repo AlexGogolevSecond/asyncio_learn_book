@@ -6,7 +6,7 @@ from connection import DATABASE_URL
 
 
 async def main():
-    connection = await asyncpg.connect(DATABASE_URL)
+    connection = await asyncpg.connect(**DATABASE_URL)
     '''
     await connection.execute("INSERT INTO brand VALUES(DEFAULT, 'Levis')")
     await connection.execute("INSERT INTO brand VALUES(DEFAULT, 'Seven')")
