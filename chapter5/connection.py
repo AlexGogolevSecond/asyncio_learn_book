@@ -4,4 +4,4 @@ user='postgres'
 database='products'
 password='password'
 
-DATABASE_URL = f'postgresql://{user}:{password}@{host}:{port}'
+DATABASE_URL = f'postgresql://{user}:{password}@{host}:{port}'  # почему-то не робит в 5_3
