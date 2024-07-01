@@ -7,10 +7,10 @@ from connection import DATABASE_URL
 
 async def main():
     connection = await asyncpg.connect(**DATABASE_URL)
-    '''
-    await connection.execute("INSERT INTO brand VALUES(DEFAULT, 'Levis')")
-    await connection.execute("INSERT INTO brand VALUES(DEFAULT, 'Seven')")
-    '''
+    
+    # await connection.execute("INSERT INTO brand VALUES(DEFAULT, 'Levis')")
+    # await connection.execute("INSERT INTO brand VALUES(DEFAULT, 'Seven')")
+    
     brand_query = 'SELECT brand_id, brand_name FROM brand'
     results: List[Record] = await connection.fetch(brand_query)  # выбирает все записи
     for brand in results:
