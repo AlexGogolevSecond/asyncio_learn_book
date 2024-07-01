@@ -1,6 +1,7 @@
 import asyncio
 import asyncpg
 import time
+from connection import DATABASE_URL
 
 
 product_query = \
@@ -34,18 +35,14 @@ async def query_products_concurrently(pool, queries):
 
 
 async def main():
-    async with asyncpg.create_pool(host='127.0.0.1',
-                                   port=7432,
-                                   user='alex',
-                                   password='614007',
-                                   database='products',
+    async with asyncpg.create_pool(**DATABASE_URL,
                                    min_size=6,
                                    max_size=26) as pool:
         st1 = time.perf_counter()
         await query_products_synchronously(pool, 10000)
-        print(time.perf_counter() - st1)
+        print(f'синхронно: {time.perf_counter() - st1}')
         st2 = time.perf_counter()
         await query_products_concurrently(pool, 10000)
-        print(time.perf_counter() - st2)
+        print(f'асинхронно: {time.perf_counter() - st2}')
 
 asyncio.run(main())
