@@ -3,8 +3,7 @@ def positive_integers(until: int):
         yield integer
 
 
-positive_iterator = positive_integers(2)
-
+positive_iterator = positive_integers(2)  # 2_000_000_000_000 занимает 88 байт И 2 тоже занимает 88 байт
 # 1-ый способ
 #print(next(positive_iterator))
 #print(next(positive_iterator))

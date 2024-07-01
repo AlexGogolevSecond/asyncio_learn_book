@@ -1,14 +1,11 @@
 import asyncio
 import asyncpg
 import logging
+from connection import DATABASE_URL
 
 
 async def main():
-    connection = await asyncpg.connect(host='127.0.0.1',
-                                       port=7432,
-                                       user='postgres',
-                                       database='products',
-                                       password='password')
+    connection = await asyncpg.connect(**DATABASE_URL)
     async with connection.transaction():
         await connection.execute("INSERT INTO brand VALUES(DEFAULT, 'my_new_brand')")
 
