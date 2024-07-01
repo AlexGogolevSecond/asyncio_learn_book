@@ -1,6 +1,7 @@
 import asyncio
 import asyncpg
 import time
+from connection import DATABASE_URL
 
 
 PRODUCT_QUERY = """
@@ -25,11 +26,7 @@ async def query_product(pool):
 
 
 async def main():
-    async with asyncpg.create_pool(host='127.0.0.1',
-                                   port=7432,
-                                   user='alex',
-                                   database='products',
-                                   password='614007',
+    async with asyncpg.create_pool(**DATABASE_URL,
                                    min_size=6,
                                    max_size=6
                                    ) as pool:  # !!!!! тут двоеточие, это контекстный менеджер
