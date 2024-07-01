@@ -1,5 +1,6 @@
 import asyncio
 import asyncpg
+from connection import DATABASE_URL
 
 
 query = '''
@@ -26,11 +27,7 @@ query = '''
 
 
 async def main():
-    connection = await asyncpg.connect(host='127.0.0.1',
-                                       port=7432,
-                                       user='alex',
-                                       database='products',
-                                       password='614007')
+    connection = await asyncpg.connect(**DATABASE_URL)
 
     result = await connection.fetch(query)
     a = 0

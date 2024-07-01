@@ -3,6 +3,8 @@ import asyncpg
 from random import randint, sample
 from typing import List, Tuple
 import os
+from connection import DATABASE_URL
+
 
 
 def load_common_words() -> List[str]:
@@ -93,11 +95,7 @@ async def gen_skus(connection,
 
 async def main():
     common_words = load_common_words()
-    connection = await asyncpg.connect(host='127.0.0.1',
-                                       port=7432,
-                                       user='alex',
-                                       database='products',
-                                       password='614007')
+    connection = await asyncpg.connect(**DATABASE_URL)
 
     product_tuples: List[Tuple[str, int]] = await gen_products(connection,
                                                                common_words,

@@ -1,5 +1,6 @@
 import asyncio
 import asyncpg
+from connection import DATABASE_URL
 
 
 product_query = """
@@ -18,11 +19,7 @@ product_query = """
 
 
 async def main():
-    connection = await asyncpg.connect(host='127.0.0.1',
-                                       port=7432,
-                                       user='alex',
-                                       database='products',
-                                       password='614007')
+    connection = await asyncpg.connect(**DATABASE_URL)
     print('Creating the product database...')
     queries = [connection.execute(product_query),
                connection.execute(product_query)]
