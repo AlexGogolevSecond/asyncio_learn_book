@@ -3,6 +3,7 @@ import asyncio
 from typing import List, Tuple, Union, Optional
 from random import sample
 import os
+from connection import DATABASE_URL
 # from util.utils import load_common_words
 
 
@@ -28,11 +29,7 @@ async def insert_brands(common_words, connection) -> int:
 
 async def main():
     common_words = load_common_words()
-    connection = await asyncpg.connect(host='127.0.0.1',
-                                       port=7432,
-                                       user='alex',
-                                       database='products',
-                                       password='614007')
+    connection = await asyncpg.connect(**DATABASE_URL)
     await insert_brands(common_words, connection)
     await connection.close()
 
