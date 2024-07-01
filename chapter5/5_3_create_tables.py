@@ -1,6 +1,6 @@
 import asyncio
 import asyncpg
-from connection import DATABASE_URL2
+from connection import DATABASE_URL
 
 
 # Марка
