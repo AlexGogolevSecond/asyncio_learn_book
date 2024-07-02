@@ -18,3 +18,4 @@ App/
 Console-Launcher.exe
 _pycache__/
 chapter6/googlebooks-eng-all-1gram-20120701-a
+*.pyc
