@@ -19,9 +19,9 @@ async def positive_integers_async(until: int):
 
 #@async_timed()
 async def main():
-    async_generator = positive_integers_async(3)
-    print(type(async_generator))
-    async for number in async_generator:
+    async_generator111 = positive_integers_async(3)  # type async_generator
+    print(type(async_generator111))
+    async for number in async_generator111:
         print(f'Получено число {number}')
 
 
