@@ -11,5 +11,5 @@ EXPOSE 19432
 
 # Инструкция
 # 1. docker build -t pg-asyncio-book .
-# 2. docker run -d -p 19432:5432 pg-asyncio-book
+# 2. docker run -d --restart always -p 19432:5432 pg-asyncio-book
 # после этого есть контейнер к которому можно подключиться на порту 19432
