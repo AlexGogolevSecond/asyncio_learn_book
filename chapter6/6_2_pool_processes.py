@@ -24,8 +24,8 @@ if __name__ == "__main__":
         # hi_john = process_pool.apply(say_hello, args=('John',))
         # print(hi_jeff)
         # print(hi_john)
-        p1 = process_pool.apply(count, args=(10000000,))  # НО, метод apply блокирующий, поэтому не подходит - робит синхронно
-        p2 = process_pool.apply(count, args=(20000000,))
+        p1 = process_pool.apply(count, args=(100_000_000,))  # НО, метод apply блокирующий, поэтому не подходит - робит синхронно
+        p2 = process_pool.apply(count, args=(200_000_000,))
         print(f'{p1=}')
         print(f'{p2=}')
     
@@ -34,10 +34,7 @@ if __name__ == "__main__":
 
 """
 Вывод:
-Закончен подсчет до 10000000 за время 1.7872558399994887
-Закончен подсчет до 20000000 за время 3.529935569000372
-p1=10000000
-p2=20000000
-5.761052821999328
+
+
 
 """

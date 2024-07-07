@@ -18,6 +18,6 @@ if __name__ == "__main__":
     to_one_hundred_million = count(100_000_000)
     to_two_hundred_million = count(200_000_000)
 
-    print('lalala')
+    # print('lalala')
     end_time = time.perf_counter()
     print(f'Полное время работы {end_time-start_time}')
