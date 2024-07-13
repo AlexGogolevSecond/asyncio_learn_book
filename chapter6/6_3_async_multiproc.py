@@ -33,9 +33,6 @@ if __name__ == "__main__":
         # метод get у ApplyResult возвращает результат
         print(f'{p1.get()=}')
         print(f'{p2.get()=}')
-        print(f'{p3.get()=}')
-        print(f'{p4.get()=}')
-        print(f'{p5.get()=}')
     
     print(time.perf_counter() - st)
 
