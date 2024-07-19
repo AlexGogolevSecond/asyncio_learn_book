@@ -29,7 +29,7 @@ if __name__ == "__main__":
         print(f'{p1=}')
         print(f'{p2=}')
     
-    print(time.perf_counter() - st)
+    print(f'синхронный пул: {time.perf_counter() - st}')
 
 
 """

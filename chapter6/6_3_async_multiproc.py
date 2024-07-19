@@ -24,7 +24,7 @@ if __name__ == "__main__":
         # hi_john = process_pool.apply(say_hello, args=('John',))
         # print(hi_jeff)
         # print(hi_john)
-        p1 = process_pool.apply_async(count, args=(100_000_000,))  # НО, метод apply блокирующий, поэтому не подходит - робит синхронно
+        p1 = process_pool.apply_async(count, args=(100_000_000,))
         p2 = process_pool.apply_async(count, args=(200_000_000,))
         # почему-то без принтов сразу сбрасывается, как будто нет join по процессам и главный процесс никого не ждёт
         # ответ ниже
@@ -34,7 +34,7 @@ if __name__ == "__main__":
         print(f'{p1.get()=}')
         print(f'{p2.get()=}')
     
-    print(time.perf_counter() - st)
+    print(f'асинхронный пул: {time.perf_counter() - st}')
 
     # ну так себе - пользоваться таким неудобно
     # или загонять все p1,... в список и уже его потом обходить и получать по каждому get
