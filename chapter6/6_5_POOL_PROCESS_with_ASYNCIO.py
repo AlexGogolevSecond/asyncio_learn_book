@@ -35,7 +35,8 @@ async def main():
         for result in results:
             print(result)
 
-        print(f'итого: {perf_counter() - st}')
+        print(f'итого: {perf_counter() - st}')  # при использовании asyncio всегда получается быстрее чем просто пулом процессов:
+                                                #  пулами - (7.04 - 7.37) c.; с asyncio - (6.73 - 6.76) c.
 
 if __name__ == "__main__":
     asyncio.run(main())
