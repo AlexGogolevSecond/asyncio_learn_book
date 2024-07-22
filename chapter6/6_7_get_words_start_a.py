@@ -21,3 +21,10 @@ with open('chapter6/googlebooks-eng-all-1gram-20120701-a', encoding='utf-8') as 
 
     print(f'{end-start:.4f} c.')
     print(f'{end-st1:.4f} c.')
+
+'''
+Нужный нам файл можно скачать по адресу https://storage.googleapis.com/books/ngrams/books/googlebooks-eng-all-1gram-20120701-a.gz
+или https://mattfowler.io/data/googlebooks-eng-all-1gram-20120701-a.gz. Любую другую часть
+этого набора данных можно скачать по адресу http://storage.googlea-pis.com/books/ngrams/books/datasetsv2.html
+
+'''
