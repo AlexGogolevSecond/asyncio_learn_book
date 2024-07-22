@@ -29,7 +29,9 @@ lines = ["I know I what I know",
          "They don't know much"]
 
 mapped_results = [map_frequency(line) for line in lines]
+print(f'{mapped_results=}')
 for result in mapped_results:
     print(result)
 
+print('=' * 30)
 print(functools.reduce(merge_dictionaries, mapped_results))
