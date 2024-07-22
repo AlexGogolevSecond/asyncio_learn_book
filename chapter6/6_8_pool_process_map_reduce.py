@@ -6,7 +6,7 @@ import time
 from typing import Dict, List
 
 
-def partition(data: List, chunk_size: int) -> List:
+def partition(data: List, chunk_size: int):
     for i in range(0, len(data), chunk_size):
         yield data[i:i + chunk_size]
 
