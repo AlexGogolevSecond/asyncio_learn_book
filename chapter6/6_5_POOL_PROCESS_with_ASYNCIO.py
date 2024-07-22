@@ -19,8 +19,11 @@ def count(count_to: int) -> int:
 
 async def main():
     with ProcessPoolExecutor() as process_pool:
+        st = perf_counter()
+
         loop: AbstractEventLoop = asyncio.get_running_loop()
-        nums = [1_000_000, 22_000_000, 100_000_000, 5_000_000, 3_000_000]
+        # nums = [1_000_000, 22_000_000, 100_000_000, 5_000_000, 3_000_000]
+        nums = [100_000_000, 1, 3, 5, 22, 200_000_000]
         calls: List[partial[int]] = [partial(count, num) for num in nums]
         call_coros = []
         for call in calls:
@@ -32,6 +35,25 @@ async def main():
         for result in results:
             print(result)
 
+        print(f'итого: {perf_counter() - st}')
 
 if __name__ == "__main__":
     asyncio.run(main())
+
+
+'''
+Закончен подсчет до 1 за время 2.9330039978958666e-06
+Закончен подсчет до 5 за время 3.3519972930662334e-06
+Закончен подсчет до 3 за время 4.1900057112798095e-06
+Закончен подсчет до 22 за время 6.704998668283224e-06
+Закончен подсчет до 100000000 за время 3.6143106749950675
+Закончен подсчет до 200000000 за время 6.7465162350054015
+перед циклом results
+100000000
+1
+3
+5
+22
+200000000
+итого: 6.761519512998348
+'''
