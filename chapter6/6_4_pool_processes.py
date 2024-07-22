@@ -16,6 +16,7 @@ if __name__ == "__main__":
     st = time.perf_counter()
     with ProcessPoolExecutor() as process_pool:
         numbers = [100_000_000, 1, 3, 5, 22, 200_000_000]
+        # numbers = [100_000_000, 10_000_000, 30_000_000, 50_000_000, 220_000, 200_000_000]
         for result in process_pool.map(count, numbers):
             print(f'{result=}')
     print(f'итого: {time.perf_counter() - st}')
