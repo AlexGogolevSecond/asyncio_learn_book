@@ -24,8 +24,9 @@ async def main():
         calls: List[partial[int]] = [partial(count, num) for num in nums]
         call_coros = []
         for call in calls:
-            call_coros.append(loop.run_in_executor(process_pool, call))  #  тут можно использовать только "частичное применение функции" - стр 164
-
+            call_coros.append(loop.run_in_executor(process_pool, call))  # тут можно использовать только "частичное применение функции" - стр 164
+                                                                         # т.е. при част. прим-ии функции нельзя передавать аргументы при вызове метода,
+                                                                         # для этого исп-ся functools.partial
         results = await asyncio.gather(*call_coros)
         print('перед циклом results')
         for result in results:
