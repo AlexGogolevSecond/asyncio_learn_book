@@ -30,7 +30,7 @@ async def main():
             call_coros.append(loop.run_in_executor(process_pool, call))  # тут можно использовать только "частичное применение функции" - стр 164
                                                                          # т.е. при част. прим-ии функции нельзя передавать аргументы при вызове метода,
                                                                          # для этого исп-ся functools.partial
-        results = await asyncio.gather(*call_coros)
+        results = await asyncio.gather(*call_coros)  # ждём получения результатов
         print('перед циклом results')
         for result in results:
             print(result)
