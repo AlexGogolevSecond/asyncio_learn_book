@@ -1,7 +1,7 @@
 import asyncio
 from asyncio.events import AbstractEventLoop
 from concurrent.futures import ProcessPoolExecutor
-from functools import partial
+import functools
 from typing import List
 from time import perf_counter
 
@@ -24,7 +24,7 @@ async def main():
         loop: AbstractEventLoop = asyncio.get_running_loop()
         # nums = [1_000_000, 22_000_000, 100_000_000, 5_000_000, 3_000_000]
         nums = [100_000_000, 1, 3, 5, 22, 200_000_000]
-        calls: List[partial[int]] = [partial(count, num) for num in nums]
+        calls: List[functools.partial[int]] = [functools.partial(count, num) for num in nums]
         call_coros = []
         for call in calls:
             call_coros.append(loop.run_in_executor(process_pool, call))  # тут можно использовать только "частичное применение функции" - стр 164
