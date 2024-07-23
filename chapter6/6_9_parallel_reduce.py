@@ -33,7 +33,7 @@ async def main(partition_size: int):
             intermediate_results = await asyncio.gather(*tasks)
             final_result = await reduce(loop, pool, intermediate_results, 500)
 
-            print(f"Aardvark has appeared {final_result['Aardvark']} times.")
+            print(f"Aardvark has appeared {final_result.get('Aardvark')} times.")
 
             end = time.time()
             print(f'MapReduce took: {(end - start):.4f} seconds')
