@@ -43,8 +43,7 @@ async def main(partition_size=60000):
         start = time.time()
         with concurrent.futures.ProcessPoolExecutor() as pool:
             for chunk in partition(contents, partition_size):
-                tasks.append(loop.run_in_executor(pool,
-                                                  functools.partial(map_frequencies, chunk)))
+                tasks.append(loop.run_in_executor(pool, functools.partial(map_frequencies, chunk)))
 
             intermediate_results = await asyncio.gather(*tasks)
             final_result = functools.reduce(merge_dictionaries, intermediate_results)
