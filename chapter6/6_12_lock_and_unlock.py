@@ -2,9 +2,9 @@ from multiprocessing import Process, Value
 
 
 def increment_value(shared_int: Value):
-    shared_int.get_lock().acquire()
+    shared_int.get_lock().acquire()  # захватываем блокировку
     shared_int.value = shared_int.value + 1
-    shared_int.get_lock().release()
+    shared_int.get_lock().release()  # освобождение блокировки
 
 
 if __name__ == '__main__':
