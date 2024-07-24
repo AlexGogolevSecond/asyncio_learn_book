@@ -1,6 +1,6 @@
 import asyncio
 import asyncpg
-from util import async_timed
+# from util import async_timed
 from typing import List, Dict
 from concurrent.futures.process import ProcessPoolExecutor
 from ..chapter5.connection import DATABASE_URL
@@ -27,7 +27,7 @@ async def query_product(pool):
         return await connection.fetchrow(product_query)
 
 
-@async_timed()
+# @async_timed()
 async def query_products_concurrently(pool, queries):
     queries = [query_product(pool) for _ in range(queries)]
     return await asyncio.gather(*queries)
@@ -40,15 +40,15 @@ def run_in_new_loop(num_queries: int) -> List[Dict]:
                                        max_size=6) as pool:
             return await query_products_concurrently(pool, num_queries)
 
-    results = [dict(result) for result in asyncio.run(run_queries())] #A
+    results = [dict(result) for result in asyncio.run(run_queries())] #A  выполнять запросы в новом цикле событий и преобразовать их в словари
     return results
 
 
-@async_timed()
+# @async_timed()
 async def main():
     loop = asyncio.get_running_loop()
     pool = ProcessPoolExecutor()
-    tasks = [loop.run_in_executor(pool, run_in_new_loop, 10000) for _ in range(5)] #B
+    tasks = [loop.run_in_executor(pool, run_in_new_loop, 10000) for _ in range(5)] #B  создать 5 процессов
     all_results = await asyncio.gather(*tasks) #C
     total_queries = sum([len(result) for result in all_results])
     print(f'Retrieved {total_queries} products the product database.')
