@@ -9,7 +9,8 @@ def increment_value(shared_int: Value):
 
 if __name__ == '__main__':
     print(f'{cpu_count()=}')
-    for _ in range(10):
+    for j in range(10):
+        print(f'{j=}')
         integer = Value('i', 0)
         procs = [Process(target=increment_value, args=(integer,)),
                  Process(target=increment_value, args=(integer,))]
