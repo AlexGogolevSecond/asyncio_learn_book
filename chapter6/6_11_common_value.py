@@ -16,3 +16,5 @@ if __name__ == '__main__':
         [p.join() for p in procs]
         print(integer.value)
         assert(integer.value == 2)
+
+# но тут состояние гонки
