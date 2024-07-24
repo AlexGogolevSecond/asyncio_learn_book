@@ -6,7 +6,7 @@ def increment_value(shared_int: Value):
 
 
 if __name__ == '__main__':
-    print(cpu_count())
+    print(f'{cpu_count()=}')
     for _ in range(10000):
         integer = Value('i', 0)
         procs = [Process(target=increment_value, args=(integer,)),

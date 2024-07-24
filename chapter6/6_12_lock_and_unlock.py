@@ -1,4 +1,4 @@
-from multiprocessing import Process, Value
+from multiprocessing import Process, Value, cpu_count
 
 
 def increment_value(shared_int: Value):
@@ -8,12 +8,13 @@ def increment_value(shared_int: Value):
 
 
 if __name__ == '__main__':
-    for _ in range(100):
+    print(f'{cpu_count()=}')
+    for _ in range(10):
         integer = Value('i', 0)
         procs = [Process(target=increment_value, args=(integer,)),
                  Process(target=increment_value, args=(integer,))]
 
         [p.start() for p in procs]
         [p.join() for p in procs]
-        print(integer.value)
+        print(f'{integer.value=}')
         assert (integer.value == 2)
