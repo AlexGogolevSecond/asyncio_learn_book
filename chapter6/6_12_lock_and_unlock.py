@@ -5,7 +5,7 @@ def increment_value(shared_int: Value):
     shared_int.get_lock().acquire()  # захватываем блокировку
     shared_int.value = shared_int.value + 1
     shared_int.get_lock().release()  # освобождение блокировки
-
+    # НО такой подход делает код синхронным
 
 if __name__ == '__main__':
     print(f'{cpu_count()=}')
