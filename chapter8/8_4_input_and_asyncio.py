@@ -9,3 +9,5 @@ async def main():
 
 
 asyncio.run(main())
+
+# тут ерунда какая-то
