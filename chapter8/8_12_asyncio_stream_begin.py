@@ -1,6 +1,6 @@
 import asyncio
 import logging
-from asyncio import StreamReader, StreamWriter
+from asyncio import StreamReader, StreamWriter, AbstractServer
 
 
 class ServerState:
