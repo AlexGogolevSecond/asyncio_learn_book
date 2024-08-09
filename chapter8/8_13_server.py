@@ -16,7 +16,7 @@ class ChatServer:
 
     async def client_connected(self, reader: StreamReader, writer: StreamWriter): #A
         command = await reader.readline()
-        print(f'CONNECTED {reader=} {writer=}')
+        print(f'CONNECTED {reader=}; {writer=}')
         command, args = command.split(b' ')
         if command == b'CONNECT':
             username = args.replace(b'\n', b'').decode()
