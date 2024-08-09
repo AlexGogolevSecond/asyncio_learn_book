@@ -18,7 +18,12 @@ async def time(request: Request) -> Response:
 
     return web.json_response(result)  # B
 
+@routes.get('/')
+async def get_data(request: Request) -> Response:
+    shared_data = request.app['shared_dict']
+    return web.json_response(shared_data)
 
 app = web.Application()  # C
+app['shared_dict'] = {'key' : 'value'}
 app.add_routes(routes)
 web.run_app(app)
