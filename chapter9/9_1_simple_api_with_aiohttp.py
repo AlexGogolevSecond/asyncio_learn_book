@@ -1,4 +1,4 @@
-from aiohttp import web
+from aiohttp import web  # web - питонячий модуль web.py
 from datetime import datetime
 from aiohttp.web_request import Request
 from aiohttp.web_response import Response
