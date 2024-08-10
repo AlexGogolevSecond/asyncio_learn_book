@@ -48,7 +48,7 @@ async def brands(request: Request) -> Response: #C
 
 
 app = web.Application()
-app.on_startup.append(create_database_pool)  # сопрограмма create_database_pool выполняется при запуске приложения
+app.on_startup.append(create_database_pool)  # сопрограмма create_database_pool выполняется при запуске приложения; on_startup - обработчик сигнала
 app.on_cleanup.append(destroy_database_pool)
 
 app.add_routes(routes)
