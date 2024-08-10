@@ -3,7 +3,7 @@ from datetime import datetime
 from aiohttp.web_request import Request
 from aiohttp.web_response import Response
 
-routes = web.RouteTableDef()
+routes = web.RouteTableDef()  # RouteTableDef - класс из web.py
 
 
 @routes.get('/time')  # A
@@ -23,7 +23,7 @@ async def get_data(request: Request) -> Response:
     shared_data = request.app['shared_dict']
     return web.json_response(shared_data)
 
-app = web.Application()  # C
+app = web.Application()  # Application - класс из web.py
 app['shared_dict'] = {'key' : 'value'}
 app.add_routes(routes)
 web.run_app(app)
