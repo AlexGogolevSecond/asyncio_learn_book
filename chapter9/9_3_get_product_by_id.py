@@ -31,9 +31,9 @@ async def get_product(request: Request) -> Response:
         if result is not None: #C
             return web.json_response(dict(result))
         else:
-            raise web.HTTPNotFound()
+            raise web.HTTPNotFound()  # 404
     except ValueError:
-        raise web.HTTPBadRequest()
+        raise web.HTTPBadRequest()  # 400
 
 
 async def create_database_pool(app: Application):
@@ -60,3 +60,5 @@ app.on_cleanup.append(destroy_database_pool)
 
 app.add_routes(routes)
 web.run_app(app)
+
+# запуск скрипта: (env) alex@ubuntu-home:~/py_tmp/asyncio_learn_book$ python -m chapter9.9_3_get_product_by_id.py
