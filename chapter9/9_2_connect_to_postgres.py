@@ -42,7 +42,9 @@ async def brands(request: Request) -> Response: #C
     brand_query = 'SELECT brand_id, brand_name FROM brand'
     results: List[Record] = await connection.fetch(brand_query)
     result_as_dict: List[Dict] = [dict(brand) for brand in results]
-    return web.json_response(result_as_dict)
+    res = web.json_response(result_as_dict)
+    print(type(res))
+    return res
 
 
 app = web.Application()
