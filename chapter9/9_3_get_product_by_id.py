@@ -16,15 +16,14 @@ async def get_product(request: Request) -> Response:
         str_id = request.match_info['id'] #A
         product_id = int(str_id)
 
-        query = \
-            """
+        query = """
             SELECT
-            product_id,
-            product_name,
-            brand_id
+                product_id,
+                product_name,
+                brand_id
             FROM product
             WHERE product_id = $1
-            """
+        """
 
         connection: Pool = request.app[DB_KEY]
         result: Record = await connection.fetchrow(query, product_id) #B
