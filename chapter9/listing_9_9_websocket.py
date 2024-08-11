@@ -10,7 +10,7 @@ class UserCounter(WebSocketEndpoint):
 
     async def on_connect(self, websocket):  # A
         await websocket.accept()
-        UserCounter.sockets.append(websocket)
+        UserCounter.sockets.append(websocket)  # ??? почему не self.sockets ???
         await self._send_count()
 
     async def on_disconnect(self, websocket, close_code):  # B
