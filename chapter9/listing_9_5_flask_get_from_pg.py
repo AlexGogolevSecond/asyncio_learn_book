@@ -16,3 +16,5 @@ def brands():
     return jsonify([{'brand_id': row[0], 'brand_name': row[1]} for row in rows])
 
 # запуск Flask приложения (этого питонячего модуля) с помощью gunicorn: gunicorn -w 8 chapter9.listing_9_5_flask_get_from_pg:app 
+# нагрузочный тест:
+# wrk -t1 -c200 -d30s http://localhost:8000/brands - в теч. 30 с. в одном потоке 200 подключений 
