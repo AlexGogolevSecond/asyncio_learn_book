@@ -36,3 +36,7 @@ class UserCounter(WebSocketEndpoint):
 
 
 app = Starlette(routes=[WebSocketRoute('/counter', UserCounter)])
+
+# uvicorn --workers 1 chapter_09.lis­ting_9_9:app
+#  браузере открыть (через Ctrl-O) html-файл listing_9_10...html
+
