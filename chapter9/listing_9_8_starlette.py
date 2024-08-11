@@ -38,3 +38,16 @@ app = Starlette(routes=[Route('/brands', brands)],
 
 
 # uvicorn --workers 8 --log-level error chapter9.listing_9_8_starlette:app
+
+'''
+wrk -t1 -c200 -d30s http://localhost:8000/brands
+Running 30s test @ http://localhost:8000/brands
+  1 threads and 200 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    55.80ms    9.08ms 256.05ms   86.43%
+    Req/Sec     3.59k   244.88     4.09k    84.33%
+  107158 requests in 30.03s, 372.00MB read
+Requests/sec:   3568.03
+Transfer/sec:     12.39MB
+'''
+
