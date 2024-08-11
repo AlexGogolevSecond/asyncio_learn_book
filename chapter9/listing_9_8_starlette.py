@@ -35,3 +35,6 @@ async def brands(request: Request) -> Response:
 app = Starlette(routes=[Route('/brands', brands)],
                 on_startup=[create_database_pool],
                 on_shutdown=[destroy_database_pool])
+
+
+# uvicorn --workers 8 --log-level error chapter9.listing_9_8_starlette:app
