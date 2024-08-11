@@ -6,7 +6,7 @@ async def application(scope, receive, send):
     })
     await send({'type': 'http.response.body', 'body': b'ASGI hello!'})
 
-# запуск uvicorn chapter_09.listing_9_7:application
+# запуск uvicorn chapter9.listing_9_7_simple_asgi:application
 
 # напрямую uvicorn не рекомендуется запускать - рекомендуется запускать uvicorn с помощью gunicorn,
 # т.к. в Gunicorn встроена логика автоматического перезапуска рабочих процессов в случае аварии
