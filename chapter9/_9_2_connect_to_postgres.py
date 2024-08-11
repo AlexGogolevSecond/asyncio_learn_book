@@ -54,3 +54,19 @@ web.run_app(app)
 
 # запуск скрипта: (env) alex@ubuntu-home:~/py_tmp/asyncio_learn_book$ python -m chapter9._9_2_connect_to_postgres.py
 # в этом случае корректно распознаются абсолютные пути - в данном случае для получения параметров из DATABASE_URL
+
+'''
+Вывод:
+wrk -t1 -c200 -d30s http://localhost:8080/brands
+Running 30s test @ http://localhost:8080/brands
+  1 threads and 200 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   143.45ms  117.69ms   1.11s    64.93%
+    Req/Sec     1.55k   135.65     1.83k    77.67%
+  46205 requests in 30.03s, 179.43MB read
+Requests/sec:   1538.81
+Transfer/sec:      5.98MB
+
+тут на одном процессе в одном потоке 1500 рпс, а на фласке с 4-мя процессами 3000 рпс. Хотя на фласке в htop почему то
+задействуются все 8 ядер, хотя я указывал гуникорну 4 ядра. На 8 ядрах у фласка 4000 рпс.
+'''
