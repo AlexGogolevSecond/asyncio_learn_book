@@ -1,0 +1,1 @@
+alex@ubuntu-home:~/py_tmp/asyncio_learn_book/async_views$ gunicorn async_views.asgi:application -k uvicorn.workers.UvicornWorker
