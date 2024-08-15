@@ -30,7 +30,7 @@ async def requests_view(request):
     url: str = request.GET['url']
     request_num: int = int(request.GET['request_num'])
     context = await make_requests(url, request_num)
-    return render(request, 'async_api/requests.html', context)
+    return render(request, 'async_api/requests.html', context)  # интересно, что для шаблона мы не указываем templates/async_api
 
 
 
