@@ -68,7 +68,8 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'async_views.wsgi.application'
+# WSGI_APPLICATION = 'async_views.wsgi.application'
+ASGI_APPLICATION = 'async_views.asgi.application'
 
 
 # Database
