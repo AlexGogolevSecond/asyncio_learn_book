@@ -25,7 +25,7 @@ async def all_products(request: Request) -> Response:
         requests = [products, favorites, cart]
         done, pending = await asyncio.wait(requests, timeout=1.0)
 
-        if products in pending:
+        if products in pending:  # вот это непонятно
             [request.cancel() for request in requests]
             return web.json_response({'error': 'Could not reach products service.'}, status=504)
         elif products in done and products.exception() is not None:
