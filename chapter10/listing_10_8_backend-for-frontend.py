@@ -33,7 +33,7 @@ async def all_products(request: Request) -> Response:
             logging.exception('Server error reaching product service. Типа по каким то товарам что-то не то с запросами (exception)', exc_info=products.exception())
             return web.json_response({'error': 'Server error reaching products service.'}, status=500)
         else:
-            product_response = await products.result().json()
+            product_response = await products.result().json()  # ???
             product_results: List[Dict] = await get_products_with_inventory(session, product_response)
 
             cart_item_count: Optional[int] = await get_response_item_count(cart,
