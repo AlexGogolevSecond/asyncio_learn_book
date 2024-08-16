@@ -27,7 +27,7 @@ async def all_products(request: Request) -> Response:
 
         if products in pending:  # вот это непонятно
             [request.cancel() for request in requests]
-            return web.json_response({'error': 'Could not reach products service.'}, status=504)
+            return web.json_response({'error': 'Could not reach products service. Запрос к сервису товаров завершился по таймауту'}, status=504)
         elif products in done and products.exception() is not None:
             [request.cancel() for request in requests]
             logging.exception('Server error reaching product service.', exc_info=products.exception())
