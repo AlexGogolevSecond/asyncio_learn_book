@@ -26,7 +26,7 @@ async def favorites(request: Request) -> Response:
 app = web.Application()
 app.on_startup.append(functools.partial(create_database_pool,
                                         host='127.0.0.1',
-                                        port=5432,
+                                        port=19432,
                                         user='postgres',
                                         password='password',
                                         database='favorites'))
