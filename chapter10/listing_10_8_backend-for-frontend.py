@@ -60,7 +60,7 @@ async def get_products_with_inventory(session: ClientSession, product_response) 
 
     inventory_tasks_to_product_id = {
         get_inventory(session, product['product_id']): product['product_id'] for product in product_response
-    }
+    }  # формируем словарь
 
     inventory_done, inventory_pending = await asyncio.wait(inventory_tasks_to_product_id.keys(), timeout=1.0)
 
