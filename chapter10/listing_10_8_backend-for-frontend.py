@@ -1,3 +1,13 @@
+'''
+Ответ вроде как д.б. таким:
+{
+    "cart_items": 1,
+    "favorite_items": null,
+    "products": [{"product_id": 4, "inventory": 4},
+                {"product_id": 3, "inventory": 65}]
+}
+'''
+
 import asyncio
 from asyncio import Task
 import aiohttp
