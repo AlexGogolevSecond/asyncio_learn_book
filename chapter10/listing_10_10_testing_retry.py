@@ -16,7 +16,9 @@ async def main():
                     retry_interval=.1)
     except TooManyRetries:
         print('Retried too many times!')
+
     print('+' * 35)
+
     try:
         await retry(always_timeout,
                     max_retries=3,
