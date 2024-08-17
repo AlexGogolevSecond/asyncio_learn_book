@@ -25,7 +25,7 @@ async def all_products(request: Request) -> Response:
         requests = [products, favorites, cart]
         done, pending = await asyncio.wait(requests, timeout=1.0)
 
-        if products in pending:  # если по таймауту выпрыгнули
+        if products in pending:  # ???  # если по таймауту выпрыгнули
             [request.cancel() for request in requests]  # отменяем всё
             return web.json_response({'error': 'Ошибка связи с сервисом продуктов. Запрос к сервису товаров завершился по таймауту'}, status=504)
         elif products in done and products.exception() is not None:
