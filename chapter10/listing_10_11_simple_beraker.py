@@ -33,7 +33,7 @@ class CircuitBreaker:
                 raise CircuitOpenException()
         else:
             if self.last_failure_time and datetime.now() > self.last_failure_time + timedelta(seconds=self.time_window):
-                self._reset('Interval since first failure elapsed, resetting!')
+                self._reset('Интервал с момента первого сбоя истек, сброс!')
             print('Цепь замкнута, отправляю запрос!')
             return await self._do_request(*args, **kwargs)
 
