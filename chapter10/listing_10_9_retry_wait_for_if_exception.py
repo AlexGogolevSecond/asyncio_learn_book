@@ -19,5 +19,5 @@ async def retry(coro: Callable[[], Awaitable],
         except Exception as e:
             logging.exception(f'Во время ожидания произошло исключение (попытка {retry_num} ), пробую еще раз.', exc_info=e)
 
-            await asyncio.sleep(retry_interval)
+            await asyncio.sleep(retry_interval)  # засыпаем
     raise TooManyRetries()
