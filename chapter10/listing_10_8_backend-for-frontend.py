@@ -16,7 +16,7 @@ from aiohttp.web_request import Request
 from aiohttp.web_response import Response
 import logging
 from typing import Dict, Set, Awaitable, Optional, List
-from chapter10.listing_10_9_retry_wait_for_if_exception import retry
+from listing_10_9_retry_wait_for_if_exception import retry
 import functools
 
 routes = web.RouteTableDef()
@@ -38,9 +38,9 @@ async def all_products(request: Request) -> Response:
         favorite_request = functools.partial(session.get, f'{FAVORITE_BASE}/users/5/favorites')
         cart_request = functools.partial(session.get, f'{CART_BASE}/users/5/cart')
         
-        products = asyncio.create_task(retry(product_request, max_retries=3, timeout=.1,retry_interval=.1))
-        favorites = asyncio.create_task(retry(favorite_request, max_retries=3, timeout=.1, retry_interval=.1))
-        cart = asyncio.create_task(retry(cart_request, max_retries=3, timeout=.1, retry_interval=.1))
+        products = asyncio.create_task(retry(product_request, max_retries=3, timeout=1.5,retry_interval=.1))
+        favorites = asyncio.create_task(retry(favorite_request, max_retries=3, timeout=1.5, retry_interval=.1))
+        cart = asyncio.create_task(retry(cart_request, max_retries=3, timeout=1.5, retry_interval=.1))
 
         requests = [products, favorites, cart]
         done, pending = await asyncio.wait(requests, timeout=1.0)
