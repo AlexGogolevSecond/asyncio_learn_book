@@ -2,7 +2,7 @@ import functools
 from aiohttp import web
 from aiohttp.web_request import Request
 from aiohttp.web_response import Response
-from chapter_10.listing_10_4 import DB_KEY, create_database_pool, destroy_database_pool
+from chapter10.listing_10_4 import DB_KEY, create_database_pool, destroy_database_pool
 
 routes = web.RouteTableDef()
 
