@@ -12,6 +12,7 @@ async def retry(coro: Callable[[], Awaitable],
                 timeout: float,
                 retry_interval: float):
     for retry_num in range(0, max_retries):
+        print('=' * 35)
         print(f'{retry_num=}; {coro=}')
         try:
             return await asyncio.wait_for(coro(), timeout=timeout)
