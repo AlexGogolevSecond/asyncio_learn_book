@@ -23,6 +23,7 @@ async def main():
                                                          # режим return_when == ALL_COMPLETED. а в этом случае asyncio.wait
                                                          # не вернется, пока все не завершится
         for done_task in done:
+            # получаем результат
             result = await done_task  # из-за этого и падает если exception - см. 4.11/4.12
             print(result)
             # if done_task.exception is None:
