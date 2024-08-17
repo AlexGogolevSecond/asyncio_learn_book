@@ -1,5 +1,5 @@
 import asyncio
-from chapter10.listing_10_9_retry_wait_for_if_exception import retry, TooManyRetries
+from listing_10_9_retry_wait_for_if_exception import retry, TooManyRetries
 
 
 async def main():
