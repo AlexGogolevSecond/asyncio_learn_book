@@ -46,8 +46,7 @@ async def main():
                     for _ in range(randrange(10))]
         customer_queue.put_nowait(Customer(i, products))
 
-    cashiers = [asyncio.create_task(checkout_customer(customer_queue, i))
-                for i in range(3)] #D
+    cashiers = [asyncio.create_task(checkout_customer(customer_queue, i)) for i in range(3)] #D
 
     await asyncio.gather(customer_queue.join(), *cashiers)
 
