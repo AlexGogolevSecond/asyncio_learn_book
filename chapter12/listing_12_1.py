@@ -39,7 +39,7 @@ async def main():
         products = [all_products[randrange(len(all_products))] for _ in range(randrange(10))]  # генерим рандомный список продуктов в корзине
         customer_queue.put_nowait(Customer(i, products))  # вставляем объект покупателя с его покупками в очередь
 
-    cashiers = [asyncio.create_task(checkout_customer(customer_queue, i)) for i in range(3)]  # 3 кассира обрабатывают очередь из 10 покупателей
+    cashiers = [asyncio.create_task(checkout_customer(customer_queue, j)) for j in range(3)]  # 3 кассира обрабатывают очередь из 10 покупателей
 
     await asyncio.gather(customer_queue.join(), *cashiers)  # ??? что за join ?
 
