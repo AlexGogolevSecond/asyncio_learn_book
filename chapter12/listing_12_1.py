@@ -19,7 +19,7 @@ class Customer:
 async def checkout_customer(queue: Queue, cashier_number: int):
     while not queue.empty(): #A
         customer: Customer = queue.get_nowait()
-        print(f'Кассир {cashier_number} обслуживает покупателя {customer.customer_id}')
+        print(f'Кассир {cashier_number} начал обслуживать покупателя {customer.customer_id}')
         for product in customer.products: #B
             print(f"Кассир {cashier_number} обслуживает покупателя {customer.customer_id}'s {product.name}")
             await asyncio.sleep(product.checkout_time)
