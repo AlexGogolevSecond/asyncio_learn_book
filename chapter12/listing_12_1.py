@@ -19,27 +19,21 @@ class Customer:
 async def checkout_customer(queue: Queue, cashier_number: int):
     while not queue.empty(): #A
         customer: Customer = queue.get_nowait()
-        print(f'Кассир {cashier_number} '
-              f'обслуживает покупателя '
-              f'{customer.customer_id}')
+        print(f'Кассир {cashier_number} обслуживает покупателя {customer.customer_id}')
         for product in customer.products: #B
-            print(f"Кассир {cashier_number} "
-                  f"обслуживает покупателя "
-                  f"{customer.customer_id}'s {product.name}")
+            print(f"Кассир {cashier_number} обслуживает покупателя {customer.customer_id}'s {product.name}")
             await asyncio.sleep(product.checkout_time)
-        print(f'Кассир {cashier_number} '
-              f'закончил обслуживать покупателя '
-              f'{customer.customer_id}')
+        print(f'Кассир {cashier_number} закончил обслуживать покупателя {customer.customer_id}')
         queue.task_done()
 
 
 async def main():
     customer_queue = Queue()
 
-    all_products = [Product('beer', 2),
-                    Product('bananas', .5),
-                    Product('sausage', .2),
-                    Product('diapers', .2)]
+    all_products = [Product('пиво', 2),
+                    Product('бананы', .5),
+                    Product('колбаса', .2),
+                    Product('подгузники', .2)]
 
     for i in range(10): #C  вставляем в очередь 10 покупателей и их покупки
         products = [all_products[randrange(len(all_products))] for _ in range(randrange(10))]  # генерим рандомный список продуктов в корзине
