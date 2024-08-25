@@ -41,6 +41,6 @@ async def main():
 
     cashiers = [asyncio.create_task(checkout_customer(customer_queue, i)) for i in range(3)]  # 3 кассира обрабатывают очередь из 10 покупателей
 
-    await asyncio.gather(customer_queue.join(), *cashiers)
+    await asyncio.gather(customer_queue.join(), *cashiers)  # ??? что за join ?
 
 asyncio.run(main())
