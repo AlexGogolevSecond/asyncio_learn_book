@@ -31,8 +31,7 @@ def generate_customer(customer_id: int) -> Customer: #A
                     Product('bananas', .5),
                     Product('sausage', .2),
                     Product('diapers', .2)]
-    products = [all_products[randrange(len(all_products))]
-                for _ in range(randrange(10))]
+    products = [all_products[randrange(len(all_products))] for _ in range(randrange(10))]
     return Customer(customer_id, products)
 
 
