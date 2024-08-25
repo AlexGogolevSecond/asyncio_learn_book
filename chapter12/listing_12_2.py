@@ -55,8 +55,7 @@ async def main():
 
     customer_producer = asyncio.create_task(customer_generator(customer_queue))
 
-    cashiers = [asyncio.create_task(checkout_customer(customer_queue, i))
-                for i in range(3)]
+    cashiers = [asyncio.create_task(checkout_customer(customer_queue, i)) for i in range(3)]
 
     await asyncio.gather(customer_producer, *cashiers)
 
