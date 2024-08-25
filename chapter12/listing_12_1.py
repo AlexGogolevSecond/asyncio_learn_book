@@ -24,7 +24,7 @@ async def checkout_customer(queue: Queue, cashier_number: int):
             print(f"Кассир {cashier_number} обслуживает покупателя {customer.customer_id}'s {product.name}")
             await asyncio.sleep(product.checkout_time)
         print(f'Кассир {cashier_number} закончил обслуживать покупателя {customer.customer_id}')
-        queue.task_done()  # ???
+        queue.task_done()  # сигнализирует очереди, что исполнитель завершил обработку текущего элемента данных
 
 
 async def main():
