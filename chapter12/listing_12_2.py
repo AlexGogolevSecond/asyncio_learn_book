@@ -40,8 +40,7 @@ async def customer_generator(queue: Queue): #B
     customer_count = 0
 
     while True:
-        customers = [generate_customer(i)
-                     for i in range(customer_count, customer_count + randrange(5))]
+        customers = [generate_customer(i) for i in range(customer_count, customer_count + randrange(5))]
         for customer in customers:
             print('Waiting to put customer in line...')
             await queue.put(customer)
