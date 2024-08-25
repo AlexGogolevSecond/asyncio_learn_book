@@ -18,7 +18,7 @@ class Customer:
 
 async def checkout_customer(queue: Queue, cashier_number: int):
     while not queue.empty(): #A
-        customer: Customer = queue.get_nowait()
+        customer: Customer = queue.get_nowait()  # задача (кассир) получает покупателя из очереди
         print(f'Кассир {cashier_number} начал обслуживать покупателя {customer.customer_id} ({len(customer.products)} продукта)')
         for product in customer.products: #B
             print(f"Кассир {cashier_number} обслуживает покупателя {customer.customer_id}'s {product.name}")
