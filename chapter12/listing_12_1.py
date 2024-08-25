@@ -42,9 +42,7 @@ async def main():
                     Product('diapers', .2)]
 
     for i in range(10): #C
-        rand_indx_all_products = randrange(len(all_products))
-        rand_count_products_by_customer = randrange(10)
-        products = [all_products[rand_indx_all_products] for _ in range(rand_count_products_by_customer)]
+        products = [all_products[randrange(len(all_products))] for _ in range(randrange(10))]
         customer_queue.put_nowait(Customer(i, products))
 
     cashiers = [asyncio.create_task(checkout_customer(customer_queue, i)) for i in range(3)] #D
