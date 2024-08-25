@@ -41,11 +41,11 @@ async def main():
                     Product('sausage', .2),
                     Product('diapers', .2)]
 
-    for i in range(10): #C
-        products = [all_products[randrange(len(all_products))] for _ in range(randrange(10))]
-        customer_queue.put_nowait(Customer(i, products))
+    for i in range(10): #C  вставляем в очередь 10 покупателей и их покупки
+        products = [all_products[randrange(len(all_products))] for _ in range(randrange(10))]  # генерим рандомный список продуктов в корзине
+        customer_queue.put_nowait(Customer(i, products))  # вставляем объект покупателя с его покупками в очередь
 
-    cashiers = [asyncio.create_task(checkout_customer(customer_queue, i)) for i in range(3)] #D
+    cashiers = [asyncio.create_task(checkout_customer(customer_queue, i)) for i in range(3)]  # 3 кассира обрабатывают очередь из 10 покупателей
 
     await asyncio.gather(customer_queue.join(), *cashiers)
 
