@@ -6,6 +6,7 @@ from aiohttp import web
 from aiohttp.web_app import Application
 from aiohttp.web_request import Request
 from aiohttp.web_response import Response
+import datetime
 
 routes = web.RouteTableDef()
 
@@ -15,18 +16,18 @@ TASKS_KEY = 'order_tasks'
 
 async def process_order_worker(worker_id: int, queue: Queue): #A
     while True:
-        print(f'Worker {worker_id}: Waiting for an order...')
+        print(f'{datetime.datetime.now()}: Worker {worker_id}: Waiting for an order...')
         order = await queue.get()
-        print(f'Worker {worker_id}: Processing order {order}')
+        print(f'{datetime.datetime.now()}: Worker {worker_id}: Processing order {order}')
         await asyncio.sleep(order)
-        print(f'Worker {worker_id}: Processed order {order}')
+        print(f'{datetime.datetime.now()}: Worker {worker_id}: Processed order {order}')
         queue.task_done()
 
-
-@routes.post('/order')
+# был post, переделал на get для простоты
+@routes.get('/order')
 async def place_order(request: Request) -> Response:
     order_queue = app[QUEUE_KEY]
-    await order_queue.put(randrange(5)) #B
+    await order_queue.put(randrange(1, 5)) #B
     return Response(body='Order placed!')
 
 
