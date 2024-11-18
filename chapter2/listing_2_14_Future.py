@@ -1,4 +1,16 @@
 from asyncio import Future
+import asyncio
+
+
+# # Получаем текущий цикл событий
+# loop = asyncio.get_event_loop()
+# if loop.is_running():
+#     # Если цикл событий уже запущен, используем его
+#     my_future = loop.create_future()
+# else:
+#     # Если нет, создаем новый цикл событий
+#     my_future = asyncio.Future()
+
 
 my_future = Future()
 
