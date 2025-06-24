@@ -5,7 +5,7 @@ from util import delay
 
 
 async def main():
-    delay_task = asyncio.create_task(delay(2))
+    # delay_task = asyncio.create_task(delay(2))
 
     try:
         result = await asyncio.wait_for(delay(2), timeout=1)
