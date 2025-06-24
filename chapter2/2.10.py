@@ -11,12 +11,12 @@ async def hello_every_second():
 
 async def main():
     print(f"Создаём first_delay в {datetime.now().time()}")
-    first_delay = asyncio.create_task(delay(3))
+    first_delay = asyncio.create_task(delay(3))  # задача начинает выполняться сразу, await ниже - это просто ждём ее окончания
     print(f"Создаём second_delay в {datetime.now().time()}")
     second_delay = asyncio.create_task(delay(3))
-    
+
     await hello_every_second()
-    
+
     print(f"Ждём first_delay в {datetime.now().time()}")
     await first_delay
     print(f"Ждём second_delay в {datetime.now().time()}")
