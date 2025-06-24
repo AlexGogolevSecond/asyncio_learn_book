@@ -4,7 +4,7 @@ from datetime import datetime
 
 
 async def hello_every_second():
-    for i in range(2):
+    for i in range(5):
         await asyncio.sleep(1)
         print("пока я жду, исполняется другой код!")
 
