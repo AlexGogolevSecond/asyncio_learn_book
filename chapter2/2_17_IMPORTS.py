@@ -13,6 +13,10 @@ from util.async_timer import async_timed
 
 @async_timed()
 async def delay(delay_seconds: int) -> int:
+/*************  ✨ Windsurf Command ⭐  *************/
+    """Async function that waits for a given number of seconds, then returns."""
+
+/*******  9ac1bd51-077e-4d95-9dd4-a180ccf28125  *******/
     print(f'засыпаю на {delay_seconds} с')
     await asyncio.sleep(delay_seconds)
     print(f'сон в течение {delay_seconds} с закончился')
