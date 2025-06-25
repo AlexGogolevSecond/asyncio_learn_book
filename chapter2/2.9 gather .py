@@ -18,7 +18,7 @@ async def main():
     # await asyncio.create_task(sl(4))
     
     # await asyncio.gather(t1, t2)  # можно и корутины передавать и задачи
-    # await asyncio.gather(sl(3), sl(4))
+    await asyncio.gather(sl(3), sl(4))
 
     finish = time.time()
     print(finish - start)
