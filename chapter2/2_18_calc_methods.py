@@ -10,7 +10,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from util.async_timer import async_timed
 
 @async_timed()
-async def count(n: int) -> int:
+async def cpu_bound_work(n: int) -> int:
     counter = 0
     for i in range(n):
         counter += 1
@@ -18,8 +18,8 @@ async def count(n: int) -> int:
 
 @async_timed()
 async def main():
-    task_one = asyncio.create_task(count(100000000))
-    task_two = asyncio.create_task(count(100000000))
+    task_one = asyncio.create_task(cpu_bound_work(100000000))
+    task_two = asyncio.create_task(cpu_bound_work(100000000))
     await task_one
     await task_two
 
