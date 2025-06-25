@@ -14,5 +14,6 @@ async def main() -> None:
     one_plus_one = await add_one(1)
     print(message)
     print(one_plus_one)
+    # тут всё последовательно
 
 asyncio.run(main())
