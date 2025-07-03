@@ -21,7 +21,8 @@ async def fetch_status(session: ClientSession, url: str) -> int:
 
 @async_timed()
 async def main():
-    async with aiohttp.ClientSession() as session:
+    conn = aiohttp.TCPConnector(limit=200)
+    async with aiohttp.ClientSession(connector=conn) as session:
         url = 'https://www.example.com'
         status = await fetch_status(session, url)
         print(f'status для {url}: {status}')
