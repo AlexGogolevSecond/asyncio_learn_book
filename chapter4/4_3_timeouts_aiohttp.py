@@ -5,7 +5,7 @@ from aiohttp import ClientSession
 
 
 async def fetch_status(session: ClientSession, url: str) -> int:
-    ten_millis = aiohttp.ClientTimeout(total=.01)
+    ten_millis = aiohttp.ClientTimeout(total=2.51)
     async with session.get(url, timeout=ten_millis) as result:
         return result.status
 
