@@ -21,7 +21,7 @@ async def fetch_status(session: ClientSession, url: str) -> int:
 
 @async_timed()
 async def main():
-    conn = aiohttp.TCPConnector(limit=200)
+    conn = aiohttp.TCPConnector(limit=200)  # Ограничение на количество соединений (по умолчанию 100)
     async with aiohttp.ClientSession(connector=conn) as session:
         url = 'https://www.example.com'
         status = await fetch_status(session, url)
