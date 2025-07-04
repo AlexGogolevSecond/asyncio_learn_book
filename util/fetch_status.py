@@ -8,10 +8,3 @@ async def fetch_status(session: ClientSession, url: str, delay: int = 0) -> str:
     await asyncio.sleep(delay)
     async with session.get(url) as result:
         return f'{result.status=}; {delay=}'
-
-
-    # try:
-    #     async with session.get(url) as result:
-    #         return result.status
-    # except Exception as ex:
-    #     print(f'!!! {url}: ' + str(ex))
