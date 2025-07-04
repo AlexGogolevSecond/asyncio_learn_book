@@ -32,7 +32,7 @@ async def main():
                                                          # не вернется, пока все не завершится
         for done_task in done:
             # получаем результат
-            result = await done_task  # из-за этого и падает если exception - см. 4.11/4.12
+            result = await done_task  # из-за этого и падает если exception - СМ. 4.11/4.12 !!!!
             print(result)
             # if done_task.exception is None:
             #     print(str(done_task.result()) + 'aaa')
