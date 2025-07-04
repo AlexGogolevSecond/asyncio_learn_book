@@ -17,7 +17,15 @@ async def main():
     async with aiohttp.ClientSession() as session:
         fetchers = [fetch_status(session, 'https://www.example.com', 10),
                     fetch_status(session, 'https://www.example.com', 3),
+                    fetch_status(session, 'https://www.example.com', 3),
                     fetch_status(session, 'https://www.example.com', 4)]
+        # asyncio.as_completed(fetchers)  # так просто нельзя:
+        #         выполняется func=<function main at 0x7e55201ec180> с аргументами args=(); kwargs={}
+        # /home/alex/py_tmp/asyncio_learn_book/util/async_timer.py:13: RuntimeWarning: coroutine 'fetch_status' was never awaited
+        #   return await func(*args, **kwargs)
+        # RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+        # <function main at 0x7e55201ec180> завершилась за 0.0051 с
+
         for finished_task in asyncio.as_completed(fetchers):
             print(type(finished_task))
             res = await finished_task
