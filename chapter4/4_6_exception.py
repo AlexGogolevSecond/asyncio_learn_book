@@ -17,7 +17,7 @@ from util.fetch_status import fetch_status
 @async_timed()
 async def main():
     async with aiohttp.ClientSession() as session:
-        urls = ['https://example.com', 'python://example.com']
+        urls = ['https://example.com', 'python://example.com', 'python://google.com']
         tasks = [fetch_status(session, url) for url in urls]
         results = await asyncio.gather(*tasks, return_exceptions=True)
 
