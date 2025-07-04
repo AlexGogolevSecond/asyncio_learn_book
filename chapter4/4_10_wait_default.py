@@ -1,10 +1,18 @@
 import asyncio
 import aiohttp
 from aiohttp import ClientSession
-from util import async_timed
-from util import fetch_status
+import sys
+from pathlib import Path
 
-"""return_when может иметь след. значения: 
+# Добавляем корень проекта в путь
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+# Абсолютный импорт
+from util.async_timer import async_timed
+from util.fetch_status import fetch_status
+
+
+"""return_when может иметь след. значения:
 ALL_COMPLETED, FIRST_EXCEPTION и FIRST_COMPLETED"""
 
 # @async_timed()
