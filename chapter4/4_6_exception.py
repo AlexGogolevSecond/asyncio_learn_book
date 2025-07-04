@@ -23,7 +23,7 @@ async def main():
 
         exceptions = [res for res in results if isinstance(res, Exception)]
         successful_results = [res for res in results if not isinstance(res, Exception)]
-
+        print('*' * 25)
         print(f'Все результаты: {results}')
         print(f'Завершились успешно: {successful_results}')
         print(f'Завершились с исключением: {exceptions}')
