@@ -20,9 +20,11 @@ async def main():
     async with aiohttp.ClientSession() as session:
         urls = ['https://example.com', 'python://example.com', 'https://google.com']
         tasks = [fetch_status(session, url) for url in urls]
+
         print(f'до вызова gather: {datetime.now()}')
         results = await asyncio.gather(*tasks, return_exceptions=True)
         print(f'после вызова gather: {datetime.now()}')
+        
         exceptions = [res for res in results if isinstance(res, Exception)]
         successful_results = [res for res in results if not isinstance(res, Exception)]
         print('*' * 25)
