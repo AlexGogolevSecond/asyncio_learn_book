@@ -25,7 +25,7 @@ async def main():
         # то оно никуда не денется и программа упадёт, видимо его нужно обрабатывать
 
         # try:
-        done, pending = await asyncio.wait(fetchers)
+        done, pending = await asyncio.wait(fetchers)  # done и pending - множества
         print(f'Число завершившихся задач: {len(done)}')
         print(f'Число ожидающих задач: {len(pending)}')  # в книге написано, что тут будет пусто, т.к. у нас тут по ум.
                                                          # режим return_when == ALL_COMPLETED. а в этом случае asyncio.wait
