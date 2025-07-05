@@ -1,8 +1,15 @@
 import asyncio
 import logging
 import aiohttp
-from util import async_timed
-from util import fetch_status
+import sys
+from pathlib import Path
+
+# Добавляем корень проекта в путь
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+# Абсолютный импорт
+from util.async_timer import async_timed
+from util.fetch_status import fetch_status
 
 
 @async_timed()
