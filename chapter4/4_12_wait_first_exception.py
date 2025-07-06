@@ -29,7 +29,7 @@ async def main():
                 logging.error("При выполнении запроса возникло исключение", exc_info=done_task.exception())
         for pending_task in pending:
             print(f'Отменяем задачу: {pending_task=}')
-            pending_task.cancel()  # и походу тут мы отменяем нафиг те 2 з-чи с таймаутом
+            pending_task.cancel()  # и походу тут мы отменяем нафиг те 2 з-чи с таймаутом - да
 
 
 asyncio.run(main())      

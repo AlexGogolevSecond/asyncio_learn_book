@@ -1,6 +1,14 @@
 import asyncio
 import aiohttp
-from util import async_timed, fetch_status
+import sys
+from pathlib import Path
+
+# Добавляем корень проекта в путь
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+# Абсолютный импорт
+from util.async_timer import async_timed
+from util.fetch_status import fetch_status
 
 
 @async_timed()
@@ -11,8 +19,7 @@ async def main():
                     asyncio.create_task(fetch_status(session, url)),
                     asyncio.create_task(fetch_status(session, url))]
 
-        done, pending = await asyncio.wait(fetchers,
-                                           return_when=asyncio.FIRST_COMPLETED)
+        done, pending = await asyncio.wait(fetchers, return_when=asyncio.FIRST_COMPLETED)
         print(f'Число завершившихся задач: {len(done)}')
         print(f'Число ожидающих задач: {len(pending)}')
         for done_task in done:
