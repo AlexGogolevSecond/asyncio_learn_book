@@ -26,8 +26,7 @@ async def main():
             if done_task.exception() is None:
                 print(done_task.result())
             else:
-                logging.error("При выполнении запроса возникло исключение", 
-                            exc_info=done_task.exception())
+                logging.error("При выполнении запроса возникло исключение", exc_info=done_task.exception())
         for pending_task in pending:
             print(f'Отменяем задачу: {pending_task=}')
             pending_task.cancel()  # и походу тут мы отменяем нафиг те 2 з-чи с таймаутом
