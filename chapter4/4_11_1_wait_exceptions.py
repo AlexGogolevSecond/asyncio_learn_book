@@ -28,7 +28,7 @@ async def main():
         for done_task in done:
             # result = await done_task возбудит исключение
             if done_task.exception() is None:
-                print('done_task.result(): ' + str(done_task.result()))
+                print(f'{done_task.result()=}')
             else:
                 logging.error("При выполнении запроса возникло исключение",
                               exc_info=done_task.exception())
