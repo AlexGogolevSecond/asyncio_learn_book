@@ -15,9 +15,9 @@ from util.fetch_status import fetch_status
 async def main():
     async with aiohttp.ClientSession() as session:
         url = 'https://www.example.com'
-        fetchers = [asyncio.create_task(fetch_status(session, url)),
-                    asyncio.create_task(fetch_status(session, url)),
-                    asyncio.create_task(fetch_status(session, url))]
+        fetchers = [asyncio.create_task(fetch_status(session, url, 4)),
+                    asyncio.create_task(fetch_status(session, url,2)),
+                    asyncio.create_task(fetch_status(session, url, 3))]
 
         done, pending = await asyncio.wait(fetchers, return_when=asyncio.FIRST_COMPLETED)
         print(f'Число завершившихся задач: {len(done)}')
@@ -25,5 +25,7 @@ async def main():
         for done_task in done:
             print(await done_task)
 
+        for pending_task in pending:
+            print(f'{pending_task=}')
 
 asyncio.run(main())
