@@ -19,8 +19,7 @@ async def main():
                     asyncio.create_task(fetch_status(session, 'python://bad.com')),
                     asyncio.create_task(fetch_status(session, 'https://www.example.com', delay=3))]
 
-        done, pending = await asyncio.wait(fetchers,
-                                           return_when=asyncio.FIRST_EXCEPTION)
+        done, pending = await asyncio.wait(fetchers, return_when=asyncio.FIRST_EXCEPTION)
         print(f'Число завершившихся задач: {len(done)}')  # == 1 - это з-ча, которая завершилась с исключением
         print(f'Число ожидающих задач: {len(pending)}')  # == 2 - это те 2 з-чи с таймаутом 3
         for done_task in done:
@@ -30,6 +29,7 @@ async def main():
                 logging.error("При выполнении запроса возникло исключение", 
                             exc_info=done_task.exception())
         for pending_task in pending:
+            print(f'Отменяем задачу: {pending_task=}')
             pending_task.cancel()  # и походу тут мы отменяем нафиг те 2 з-чи с таймаутом
 
 
