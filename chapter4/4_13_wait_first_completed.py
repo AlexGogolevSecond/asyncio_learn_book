@@ -23,7 +23,7 @@ async def main():
         print(f'Число завершившихся задач: {len(done)}')
         print(f'Число ожидающих задач: {len(pending)}')
         for done_task in done:
-            print(await done_task)
+            print(await done_task)  # тут будет только одна задача, т.к. return_when=FIRST_COMPLETED
 
         for pending_task in pending:
             print(f'{pending_task=}')
