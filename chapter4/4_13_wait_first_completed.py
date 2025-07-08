@@ -20,8 +20,9 @@ async def main():
                     asyncio.create_task(fetch_status(session, url, 3))]
 
         done, pending = await asyncio.wait(fetchers, return_when=asyncio.FIRST_COMPLETED)
-        print(f'Число завершившихся задач: {len(done)}')
-        print(f'Число ожидающих задач: {len(pending)}')
+        # print(f'Число завершившихся задач: {len(done)}')
+        # print(f'Число ожидающих задач: {len(pending)}')
+        print(f"Завершено: {len(done)}, Ожидают: {len(pending)}")
         for done_task in done:
             print(await done_task)  # тут будет только одна задача, т.к. return_when=FIRST_COMPLETED
 
