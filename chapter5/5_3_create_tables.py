@@ -75,7 +75,7 @@ async def main():
     print('Создается база данных product...')
     for statement in statements:
         # print(f'{statement=}')
-        await connection.execute(statement)
+        status = await connection.execute(statement)
         # print(status)
     print('База данных product создана!')
     await connection.close()
