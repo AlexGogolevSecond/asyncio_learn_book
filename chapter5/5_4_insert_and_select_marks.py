@@ -25,3 +25,7 @@ async def main():
     await connection.close()
 
 asyncio.run(main())
+
+# Вывод:
+# id: 1, name: Levis
+# id: 2, name: Seven
