@@ -18,10 +18,10 @@ def load_common_words() -> List[str]:
 
 
 async def gen_products(connection,
-                 common_words: List[str],
-                 brand_id_start: int,
-                 brand_id_end: int,
-                 count_products_to_create: int) -> List[Tuple[str, int]]:
+                       common_words: List[str],
+                       brand_id_start: int,
+                       brand_id_end: int,
+                       count_products_to_create: int) -> List[Tuple[str, int]]:
     """
     Генерируем список кортежей, состоящих из строки (10 слов) и brand_id для заполнения таблицы brand
     параметры brand_id_start и brand_id_end игнорируются
