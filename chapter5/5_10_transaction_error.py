@@ -6,7 +6,7 @@ from connection import DATABASE_URL
 
 async def main():
     connection = await asyncpg.connect(**DATABASE_URL)
-    try:
+    try:  # !!!!! используется try except !!!!!!
         async with connection.transaction():
             insert_brand = "INSERT INTO brand VALUES(9999, 'big_brand')"
             await connection.execute(insert_brand)
