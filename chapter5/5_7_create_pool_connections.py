@@ -32,9 +32,9 @@ async def main():
                                    ) as pool:  # !!!!! тут двоеточие, это контекстный менеджер
         start = time.perf_counter()
 
-        #res = await query_product(pool)
-        #res = await query_product(pool)
-        #res = await query_product(pool)
+        # res = await query_product(pool)
+        # res = await query_product(pool)
+        # res = await query_product(pool)
 
 
         res = await asyncio.gather(query_product(pool),
