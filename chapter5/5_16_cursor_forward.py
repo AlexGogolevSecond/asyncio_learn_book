@@ -10,8 +10,8 @@ async def main():
         query = 'SELECT product_id, product_name from product'
         cursor = await connection.cursor(query)
 
-        await cursor.forward(500)
-        products = await cursor.fetch(100)
+        # await cursor.forward(500)
+        products = await cursor.fetch(5)
         for product in products:
             print(product)
 
