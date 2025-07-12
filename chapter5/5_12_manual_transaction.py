@@ -25,3 +25,5 @@ async def main():
     print(brands)
 
     await connection.close()
+
+asyncio.run(main())
