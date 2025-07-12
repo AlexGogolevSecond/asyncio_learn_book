@@ -18,11 +18,11 @@ query = '''
         wares.product_name,
         wares.brand_name,
         product_color.product_color_name,
-        product_size.product_size_name 
+        product_size.product_size_name
     from wares
     left join sku on sku.product_id  = wares.product_id
-    left join product_color on sku.product_color_id  = product_color.product_color_id 
-    left join product_size on sku.product_size_id = product_size.product_size_id 
+    left join product_color on sku.product_color_id  = product_color.product_color_id
+    left join product_size on sku.product_size_id = product_size.product_size_id
 '''
 
 
@@ -30,6 +30,7 @@ async def main():
     connection = await asyncpg.connect(**DATABASE_URL)
 
     result = await connection.fetch(query)
+    print(result)
     a = 0
 
 
