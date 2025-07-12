@@ -8,7 +8,7 @@ async def main():
 
     # query = 'SELECT product_id, product_name FROM product'
     query = 'select * from brand'
-    async with connection.transaction():  # обязательно д.б. транзакция
+    async with connection.transaction():  # !!! обязательно д.б. транзакция
         async for product in connection.cursor(query):  # выбираем по 50 (по умолчанию https://magicstack.github.io/asyncpg/current/api/index.html)
             print(f'{product=}')
 
