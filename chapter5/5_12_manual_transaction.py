@@ -11,7 +11,7 @@ async def main():
 
     try:
         await connection.execute("INSERT INTO brand VALUES(DEFAULT, 'brand_1')")
-        await connection.execute("INSERT INTO brand VALUES(DEFAULT, 'brand_2')")
+        await connection.execute("INSERT INTO brand23232 VALUES(DEFAULT, 'brand_2')")
     except asyncpg.PostgresError:
         print('Ошибка, транзакция откатывается!')
         await transaction.rollback()
@@ -19,8 +19,8 @@ async def main():
         print('Транзакция успешно завершена!')
         await transaction.commit()
 
-    query = """select barnd_name from brand
-               where barnd_name LIKE 'brand%'"""
+    query = """select brand_name from brand
+               where brand_name LIKE 'brand%'"""
     brands = await connection.fetch(query)
     print(brands)
 
