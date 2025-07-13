@@ -7,7 +7,7 @@ from time import perf_counter
 
 
 def count(count_to: int) -> int:
-    '''т.е. метод м.б. даже не асинхронным'''    
+    '''т.е. метод м.б. даже не асинхронным'''
     start = perf_counter()
     counter = 0
     while counter < count_to:
@@ -30,6 +30,8 @@ async def main():
             call_coros.append(loop.run_in_executor(process_pool, call))  # тут можно использовать только "частичное применение функции" - стр 164
                                                                          # т.е. при част. прим-ии функции нельзя передавать аргументы при вызове метода,
                                                                          # для этого исп-ся functools.partial
+        # for num in nums:
+        #     call_coros.append(loop.run_in_executor(process_pool, count, num))  # вообще-то так тоже работает - передача параметра
         results = await asyncio.gather(*call_coros)  # ждём получения результатов
         print('перед циклом results')
         for result in results:
