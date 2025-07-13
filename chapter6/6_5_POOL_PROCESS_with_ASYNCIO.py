@@ -18,7 +18,7 @@ def count(count_to: int) -> int:
 
 
 async def main():
-    with ProcessPoolExecutor() as process_pool:
+    with ProcessPoolExecutor() as process_pool_executor:
         st = perf_counter()
 
         loop: AbstractEventLoop = asyncio.get_running_loop()
@@ -26,12 +26,12 @@ async def main():
         nums = [100_000_000, 1, 3, 5, 22, 200_000_000]
         calls: List[functools.partial[int]] = [functools.partial(count, num) for num in nums]
         call_coros = []
-        for call in calls:
-            call_coros.append(loop.run_in_executor(process_pool, call))  # тут можно использовать только "частичное применение функции" - стр 164
-                                                                         # т.е. при част. прим-ии функции нельзя передавать аргументы при вызове метода,
-                                                                         # для этого исп-ся functools.partial
-        # for num in nums:
-        #     call_coros.append(loop.run_in_executor(process_pool, count, num))  # вообще-то так тоже работает - передача параметра
+        # for call in calls:
+        #     call_coros.append(loop.run_in_executor(process_pool, call))  # тут можно использовать только "частичное применение функции" - стр 164
+        #                                                                  # т.е. при част. прим-ии функции нельзя передавать аргументы при вызове метода,
+        #                                                                  # для этого исп-ся functools.partial
+        for num in nums:
+            call_coros.append(loop.run_in_executor(process_pool_executor, count, num))  # вообще-то так тоже работает - передача параметра, причём даже быстрее чем частичное применение
         results = await asyncio.gather(*call_coros)  # ждём получения результатов
         print('перед циклом results')
         for result in results:
