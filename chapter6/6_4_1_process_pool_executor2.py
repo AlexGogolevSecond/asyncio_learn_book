@@ -11,16 +11,16 @@ async def main():
 
     # Важно: создавать Executor внутри асинхронной функции,
     # но лучше использовать контекстный менеджер
-    try:
-        with ProcessPoolExecutor() as pool:
-            result = await loop.run_in_executor(
-                pool,
-                cpu_intensive_task,
-                10_000_000
-            )
-            print(f"Результат: {result}")
-    except Exception as e:
-        print(f"Произошла ошибка: {e}")
+    # try:
+    with ProcessPoolExecutor() as pool:
+        result = await loop.run_in_executor(
+            pool,
+            cpu_intensive_task,
+            10_000_000
+        )
+        print(f"Результат: {result}")
+    # except Exception as e:
+    #     print(f"Произошла ошибка: {e}")
 
 # Важно: защитить точку входа для многопроцессорных приложений
 if __name__ == "__main__":
