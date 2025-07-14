@@ -28,7 +28,7 @@ lines = ["I know I what I know",
          "I don't know much",
          "They don't know much"]
 
-mapped_results = [map_frequency(line) for line in lines]
+mapped_results = [map_frequency(line) for line in lines]  # список словарей
 print(f'{mapped_results=}')
 for result in mapped_results:
     print(result)
