@@ -16,7 +16,7 @@ async def main():
         result = await loop.run_in_executor(
             pool,
             cpu_intensive_task,
-            10_000_000
+            10_000_000  # вполне себе принимает параметр, а в книге говорится, что нельзя передавать параметры при вызове метода
         )
         print(f"Результат: {result}")
     # except Exception as e:
