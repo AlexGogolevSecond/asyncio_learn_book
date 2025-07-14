@@ -5,7 +5,7 @@ file_size = os.path.getsize('chapter6/googlebooks-eng-all-1gram-20120701-a')  # 
 print(f'Размер файла: {file_size} байт ({round((file_size / (1024*1024*1024)), 2)} Гбайт)')
 
 st1 = time.time()
-freqs = {}
+freqs: dict[str, int] = {}
 with open('chapter6/googlebooks-eng-all-1gram-20120701-a', encoding='utf-8') as f:
     # lines = f.readlines()  # это точно оптимально? - нет, но приходится так делать (хотя можно расмотреть вариант с yield)
     start = time.time()
