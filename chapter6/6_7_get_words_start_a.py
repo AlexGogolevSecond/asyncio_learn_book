@@ -9,7 +9,7 @@ freqs = {}
 with open('chapter6/googlebooks-eng-all-1gram-20120701-a', encoding='utf-8') as f:
     # lines = f.readlines()  # это точно оптимально? - нет, но приходится так делать (хотя можно расмотреть вариант с yield)
     start = time.time()
-    for line in f:  # lines  # убрал полную загрузку в память, т.к. это совсем не оптимально и не даёт прямо большого выйгрыша в скорости
+    for line in f:  # lines  # убрал полную загрузку в память, т.к. это совсем не оптимально
         data = line.split('\t')
         word = data[0]
         count = int(data[2])
