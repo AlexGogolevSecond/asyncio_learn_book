@@ -1,15 +1,15 @@
 import time
 import os
 
-file_size = os.path.getsize('chapter6/googlebooks-eng-all-1gram-20120701-a')  # 1.68 Gb
+file_size = os.path.getsize('chapter6/googlebooks-eng-all-1gram-20120701-a')  # 1.68 Gb  https://storage.googleapis.com/books/ngrams/books/googlebooks-eng-all-1gram-20120701-a.gz
 print(f'Размер файла: {file_size} байт ({round((file_size / (1024*1024*1024)), 2)} Гбайт)')
 
 st1 = time.time()
 freqs = {}
 with open('chapter6/googlebooks-eng-all-1gram-20120701-a', encoding='utf-8') as f:
-    lines = f.readlines()  # это точно оптимально? - нет, но приходится так делать (хотя можно расмотреть вариант с yield)
+    # lines = f.readlines()  # это точно оптимально? - нет, но приходится так делать (хотя можно расмотреть вариант с yield)
     start = time.time()
-    for line in lines:
+    for line in f:  # lines  # убрал полную загрузку в память, т.к. это совсем не оптимально и не даёт прямо большого выйгрыша в скорости
         data = line.split('\t')
         word = data[0]
         count = int(data[2])
@@ -28,10 +28,15 @@ with open('chapter6/googlebooks-eng-all-1gram-20120701-a', encoding='utf-8') as 
 этого набора данных можно скачать по адресу http://storage.googlea-pis.com/books/ngrams/books/datasetsv2.html
 
 Вывод:
+если грузим все строки в память:
 Размер файла: 1801526075 байт (1.68 Гбайт)
-50.95 c.
-57.88 c. - вместе с загрузкой всех строк в память
+59.82 c.
+74.02 c. - вместе с загрузкой всех строк в память
 
+если не грузим всё в память, а обходим построчно файл:
+Размер файла: 1801526075 байт (1.68 Гбайт)
+78.91 c.
+78.91 c. - вместе с загрузкой всех строк в память
 '''
 '''
 Файл содержит:
