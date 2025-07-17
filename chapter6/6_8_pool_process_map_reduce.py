@@ -22,15 +22,14 @@ def map_frequencies(chunk: List[str]) -> Dict[str, int]:
     return counter
 
 
-def merge_dictionaries(first: Dict[str, int], 
-                       second: Dict[str, int]) -> Dict[str, int]:
+def merge_dictionaries(first: Dict[str, int], second: Dict[str, int]) -> Dict[str, int]:
     merged = first
     for key in second:
         if key in merged:
             merged[key] += second[key]
         else:
             merged[key] = second[key]
-        return merged
+    return merged
 
 
 async def main(partition_size=60000):
