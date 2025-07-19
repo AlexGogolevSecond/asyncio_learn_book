@@ -7,6 +7,10 @@ def increment_value(shared_int: Value):
     shared_int.get_lock().release()  # освобождение блокировки
     # НО такой подход делает код синхронным
 
+    # # наверное лучше использовать контекстный менеджер
+    # with shared_int.get_lock():
+    #     shared_int.value = shared_int.value + 1
+
 if __name__ == '__main__':
     print(f'{cpu_count()=}')
     for j in range(10):
