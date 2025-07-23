@@ -8,6 +8,18 @@ from listing_6_8_pool_process_map_reduce import partition, merge_dictionaries
 
 map_progress: Value
 
+def partition(data: List, chunk_size: int):
+    for i in range(0, len(data), chunk_size):
+        yield data[i:i + chunk_size]
+
+def merge_dictionaries(first: Dict[str, int], second: Dict[str, int]) -> Dict[str, int]:
+    merged = first
+    for key in second:
+        if key in merged:
+            merged[key] += second[key]
+        else:
+            merged[key] = second[key]
+    return merged        
 
 def init(progress: Value):
     global map_progress
