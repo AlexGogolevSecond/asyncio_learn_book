@@ -44,8 +44,7 @@ async def main(partiton_size: int):
         tasks = []
         map_progress = Value('i', 0)
 
-        with ProcessPoolExecutor(initializer=init,
-                                 initargs=(map_progress,)) as pool:
+        with ProcessPoolExecutor(initializer=init, initargs=(map_progress,)) as pool:
             total_partitions = len(contents) // partiton_size
             reporter = asyncio.create_task(progress_reporter(total_partitions))
 
