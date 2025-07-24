@@ -43,9 +43,7 @@ async def query_products_concurrently(pool, queries):
 
 def run_in_new_loop(num_queries: int) -> List[Dict]:
     async def run_queries():
-        async with asyncpg.create_pool(**DATABASE_URL,
-                                       min_size=6,
-                                       max_size=6) as pool:
+        async with asyncpg.create_pool(**DATABASE_URL, min_size=6, max_size=6) as pool:
             return await query_products_concurrently(pool, num_queries)
 
     results = [dict(result) for result in asyncio.run(run_queries())] #A  выполнять запросы в новом цикле событий и преобразовать их в словари
