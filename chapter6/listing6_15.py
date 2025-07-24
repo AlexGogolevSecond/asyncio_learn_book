@@ -3,7 +3,15 @@ import asyncpg
 # from util import async_timed
 from typing import List, Dict
 from concurrent.futures.process import ProcessPoolExecutor
-from ..chapter5.connection import DATABASE_URL
+import sys
+from pathlib import Path
+
+# Добавляем корень проекта в путь
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+# # Абсолютный импорт
+# # from util.async_timer import async_timed
+from chapter5.connection import DATABASE_URL
 
 
 product_query = \
