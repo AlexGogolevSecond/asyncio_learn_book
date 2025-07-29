@@ -13,9 +13,9 @@ async def fetch_status(session: ClientSession, url: str) -> int:
 # @async_timed()
 async def main():
     async with aiohttp.ClientSession() as session:
-        url = 'https://example.com'
-        import random
-        delay = random.randint(1, 5)
+        url = 'https://www.example.com'
+        # import random
+        # delay = random.randint(1, 5)
         #url = f'http://127.0.0.1:8000/get_info?n={delay}'
         urls = [url for _ in range(1000)]
         # urls = [f'http://127.0.0.1:8000/get_info?n={random.randint(1, 5)}' for _ in range(1000)]
