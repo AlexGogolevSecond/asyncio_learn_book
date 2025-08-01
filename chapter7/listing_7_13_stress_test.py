@@ -31,8 +31,8 @@ class StressTest:
     async def _get_url(self, session: ClientSession, url: str):
         try:
             await session.get(url)
-        except Exception as e:
-            print(e)
+        except Exception as ex:
+            print(f'{str(ex)=}')
         self._completed_requests = self._completed_requests + 1  # C
         if self._completed_requests % self._refresh_rate == 0 \
                 or self._completed_requests == self._total_requests:
