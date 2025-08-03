@@ -6,7 +6,7 @@ from aiohttp import ClientSession
 
 
 class StressTest:
-
+    """Класс для нагрузочного тестирования"""
     def __init__(self,
                  loop: AbstractEventLoop,
                  url: str,
