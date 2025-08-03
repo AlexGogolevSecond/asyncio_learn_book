@@ -2,7 +2,7 @@
 
 import tkinter
 from tkinter import ttk
-import time
+
 
 window = tkinter.Tk()
 window.title('Hello world app')
