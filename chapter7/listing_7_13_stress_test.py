@@ -11,8 +11,7 @@ class StressTest:
                  loop: AbstractEventLoop,
                  url: str,
                  total_requests: int,
-                 callback: Callable[[int, int], None]):
-        self._completed_requests: int = 0
+
         self._load_test_future: Optional[Future] = None
         self._loop = loop
         self._url = url
