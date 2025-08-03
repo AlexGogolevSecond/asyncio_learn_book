@@ -10,8 +10,9 @@ def some():
     a = 0
     b = 1
     d = lalala(a)
+    print(f'{a=}; {b=}; {d=}')
     c = a + b + d
-    print(c)
+    print(f'{c=}')
     return c
     
 if __name__ == "__main__":
