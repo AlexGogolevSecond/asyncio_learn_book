@@ -14,7 +14,7 @@ def some():
     c = a + b + d
     print(f'{c=}')
     return c
-    
+
 if __name__ == "__main__":
     res = some()
     print(f'{res=}')

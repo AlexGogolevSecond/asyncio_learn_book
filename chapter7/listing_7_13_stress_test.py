@@ -11,7 +11,8 @@ class StressTest:
                  loop: AbstractEventLoop,
                  url: str,
                  total_requests: int,
-
+                 callback: Callable[[int, int], None]):
+        self._completed_requests: int = 0
         self._load_test_future: Optional[Future] = None
         self._loop = loop
         self._url = url
@@ -30,8 +31,8 @@ class StressTest:
     async def _get_url(self, session: ClientSession, url: str):
         try:
             await session.get(url)
-        except Exception as ex:
-            print(f'{str(ex)=}')
+        except Exception as e:
+            print(e)
         self._completed_requests = self._completed_requests + 1  # C
         if self._completed_requests % self._refresh_rate == 0 \
                 or self._completed_requests == self._total_requests:
