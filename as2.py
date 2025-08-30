@@ -1,6 +1,6 @@
 import asyncio
 import random
-import time
+# import time
 from datetime import datetime
 
 
@@ -28,7 +28,7 @@ async def main():
         result.update({c: (res, datetime.today().strftime("%H:%M:%S"))})
         c += 1
 
-    b = 0
+    # b = 0
     print('*'*25)
     print(f'{datetime.today().strftime("%H:%M:%S")} result: {result}')
 
