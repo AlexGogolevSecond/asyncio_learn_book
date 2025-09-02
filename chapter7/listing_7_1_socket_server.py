@@ -15,5 +15,6 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server:
     server.listen()
     while True:
         connection, _ = server.accept()  # A
+        print(f'Connection from {connection.getpeername()}')
         thread = Thread(target=echo, args=(connection,))  # B
         thread.start()  # C
