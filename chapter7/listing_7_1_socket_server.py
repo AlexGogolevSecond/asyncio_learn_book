@@ -5,7 +5,7 @@ import socket
 def echo(client: socket):
     while True:
         data = client.recv(2048)
-        print(f'Received {data}, sending!')
+        print(f'Received {data}, sending! {client=}')
         client.sendall(data)
 
 
