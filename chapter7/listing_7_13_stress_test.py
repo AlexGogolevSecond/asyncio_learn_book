@@ -34,8 +34,7 @@ class StressTest:
         except Exception as e:
             print(e)
         self._completed_requests += 1  # C
-        if self._completed_requests % self._refresh_rate == 0 \
-                or self._completed_requests == self._total_requests:
+        if (self._completed_requests % self._refresh_rate == 0) or (self._completed_requests == self._total_requests):
             self._callback(self._completed_requests, self._total_requests)
 
     async def _make_requests(self):
