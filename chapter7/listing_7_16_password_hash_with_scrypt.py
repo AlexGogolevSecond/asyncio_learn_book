@@ -25,3 +25,5 @@ for password in passwords:
 
 end = time.time()
 print(end - start)  # 49.15945792198181 c.
+
+# на ноуте 78.8944742679596 с.
