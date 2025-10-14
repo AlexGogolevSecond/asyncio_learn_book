@@ -34,3 +34,5 @@ async def main():
 st = time.time()
 asyncio.run(main())
 print(f'{time.time() - st}')  # 13.148042678833008 c.
+
+# ноут 25.60030436515808 c
