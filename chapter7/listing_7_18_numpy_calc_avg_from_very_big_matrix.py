@@ -9,7 +9,7 @@ matrix = np.arange(data_points).reshape(rows, columns)
 
 s = time.time()
 
-res = np.mean(matrix, axis=1)
+res = np.mean(matrix, axis=1)  # axis=1 - по строкам
 
 e = time.time()
 print(e - s)  # 0.4072079658508301 c. (в го такой код выполняется за 285.690921ms)
