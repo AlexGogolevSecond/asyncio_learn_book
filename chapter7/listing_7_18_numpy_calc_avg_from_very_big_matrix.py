@@ -1,7 +1,7 @@
 import numpy as np
 import time
 
-data_points = 400_000_000
+data_points = 500_000_000  # 4_000_000_000
 rows = 50
 columns = int(data_points / rows)
 
