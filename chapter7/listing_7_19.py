@@ -5,8 +5,8 @@ import asyncio
 # from util import async_timed
 
 
-def mean_for_row(arr, row):
-    return np.mean(arr[row])
+def mean_for_row(row):
+    return np.mean(row)
 
 
 data_points = 500_000_000 # 4_000_000_000
@@ -23,7 +23,7 @@ async def main():
     with ThreadPoolExecutor() as pool:
         tasks = []
         for i in range(rows):
-            mean = functools.partial(mean_for_row, matrix, i)
+            mean = functools.partial(mean_for_row, matrix[i])
             tasks.append(loop.run_in_executor(pool, mean))
 
         results = asyncio.gather(*tasks)
@@ -31,3 +31,7 @@ async def main():
     print(f'{f - s}')
 
 asyncio.run(main())
+
+
+# Вывод:
+# 0.22501659393310547
