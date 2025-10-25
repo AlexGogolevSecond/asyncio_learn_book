@@ -3,8 +3,14 @@ from asyncio import StreamReader
 from typing import AsyncGenerator
 
 
+# async def read_until_empty(stream_reader: StreamReader) -> AsyncGenerator[str, None]:
+#     while response := await stream_reader.readline(): #A
+#         yield response.decode()
 async def read_until_empty(stream_reader: StreamReader) -> AsyncGenerator[str, None]:
-    while response := await stream_reader.readline(): #A
+    while True:
+        response = await stream_reader.readline()
+        if not response:
+            break
         yield response.decode()
 
 
