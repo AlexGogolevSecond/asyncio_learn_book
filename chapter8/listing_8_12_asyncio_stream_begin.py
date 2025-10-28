@@ -14,6 +14,7 @@ class ServerState:
         asyncio.create_task(self._echo(reader, writer))
 
     async def _on_connect(self, writer: StreamWriter): #B
+
         writer.write(f'Welcome! {len(self._writers)} user(s) are online!\n'.encode())
         await writer.drain()
         await self._notify_all('New user connected!\n')
