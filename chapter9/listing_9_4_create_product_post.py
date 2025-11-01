@@ -7,6 +7,7 @@ from asyncpg.pool import Pool
 from asyncpg import Record
 from aiohttp.web_app import Application
 from chapter5.connection import DATABASE_URL
+# from random import randint
 
 
 routes = web.RouteTableDef()
