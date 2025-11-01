@@ -1,7 +1,7 @@
 from aiohttp import web
 from aiohttp.web_request import Request
 from aiohttp.web_response import Response
-from _9_2_connect_to_postgres import create_database_pool, destroy_database_pool
+from chapter9.listing_9_2_connect_to_postgres import create_database_pool, destroy_database_pool
 
 
 routes = web.RouteTableDef()
@@ -20,7 +20,7 @@ async def create_product(request: Request) -> Response:
 
     if PRODUCT_NAME in body and BRAND_ID in body:
         db = request.app[DB_KEY]
-        await db.execute('''INSERT INTO product(product_id, 
+        await db.execute('''INSERT INTO product(product_id,
                                                 product_name, 
                                                 brand_id) 
                                                 VALUES(DEFAULT, $1, $2)''',
