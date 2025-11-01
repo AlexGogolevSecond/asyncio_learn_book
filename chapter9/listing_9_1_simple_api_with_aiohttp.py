@@ -26,4 +26,4 @@ async def get_data(request: Request) -> Response:
 app = web.Application()  # Application - класс из web.py
 app['shared_dict'] = {'key' : 'value'}
 app.add_routes(routes)
-web.run_app(app)
+web.run_app(app, port=50000)

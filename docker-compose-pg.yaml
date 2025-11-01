@@ -2,19 +2,20 @@ version: "3.0"
 services:
   db:
     container_name: "db"
-    image: postgres:14.1-alpine
+    #image: postgres:14.1-alpine
+    image: postgres:latest
     restart: always
     environment:
-      - POSTGRES_USER=alex
-      - POSTGRES_PASSWORD=614007
-      - POSTGRES_DB=somebase
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=products
     ports:
       - "6432:5432"
-        # первая часть наш комп, вторая - в контейнере - вроде как  
-    networks:
-      - custom
-networks:
-  custom:
-    driver: bridge
+        # первая часть наш комп, вторая - в контейнере - вроде как
+    # networks:
+    #   - custom
+# networks:
+#   custom:
+#     driver: bridge
 
-# docker-compose -f docker-compose-local.yaml up -d
+# sudo docker-compose -f docker-compose-pg.yaml up -d
