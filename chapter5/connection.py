@@ -1,5 +1,5 @@
 host='127.0.0.1'  # '127.0.0.1'  # '172.17.188.173'
-port=5432
+port=6432
 user='postgres'
 database='products'
 password='password'
