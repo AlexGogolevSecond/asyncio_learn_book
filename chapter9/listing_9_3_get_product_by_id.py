@@ -5,6 +5,8 @@ from aiohttp.web_request import Request
 from aiohttp.web_response import Response
 from asyncpg import Record
 from asyncpg.pool import Pool
+from chapter5.connection import DATABASE_URL
+
 
 routes = web.RouteTableDef()
 DB_KEY = 'database'
@@ -38,13 +40,9 @@ async def get_product(request: Request) -> Response:
 
 async def create_database_pool(app: Application):
     print('Creating database pool.')
-    pool: Pool = await asyncpg.create_pool(host='127.0.0.1',
-                                           port=19432,
-                                           user='postgres',
-                                           password='password',
-                                           database='products',
-                                           min_size=6,
-                                           max_size=6)
+    pool: Pool = await asyncpg.create_pool(min_size=6,
+                                           max_size=6,
+                                           **DATABASE_URL)
     app[DB_KEY] = pool
 
 
