@@ -83,3 +83,6 @@ app.on_cleanup.append(destroy_database_pool)
 
 app.add_routes(routes)
 web.run_app(app)
+
+
+# curl -i http://localhost:8080/product -d '{"product_name": "Test Product", "brand_id": 1}'
