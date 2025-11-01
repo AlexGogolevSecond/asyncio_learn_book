@@ -1,14 +1,16 @@
+import asyncpg
 from aiohttp import web
 from aiohttp.web_request import Request
 from aiohttp.web_response import Response
-from chapter9.listing_9_2_connect_to_postgres import create_database_pool, destroy_database_pool
+# from chapter9.listing_9_2_connect_to_postgres import create_database_pool, destroy_database_pool
 from asyncpg.pool import Pool
 from asyncpg import Record
+from aiohttp.web_app import Application
+from chapter5.connection import DATABASE_URL
 
 
 routes = web.RouteTableDef()
 DB_KEY = 'database'
-
 
 @routes.get('/products/{id}')
 async def get_product(request: Request) -> Response:
@@ -59,9 +61,24 @@ async def create_product(request: Request) -> Response:
         raise web.HTTPBadRequest(text='Какая-то ерунда в теле запроса!')
 
 
+async def create_database_pool(app: Application): #A
+    print('Creating database pool.')
+
+    pool: Pool = await asyncpg.create_pool(min_size=6,
+                                           max_size=6,
+                                           **DATABASE_URL)
+
+    app[DB_KEY] = pool
+
+
+async def destroy_database_pool(app: Application): #B
+    print('Destroying database pool.')
+    pool: Pool = app[DB_KEY]
+    await pool.close()
+
 app = web.Application()
 app.on_startup.append(create_database_pool)
 app.on_cleanup.append(destroy_database_pool)
 
 app.add_routes(routes)
-web.run_app(app, port=50000)
+web.run_app(app)
