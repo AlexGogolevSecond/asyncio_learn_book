@@ -39,7 +39,7 @@ async def destroy_database_pool(app: Application): #B
 @routes.get('/brands')
 async def brands(request: Request) -> Response: #C
     connection: Pool = request.app[DB_KEY]
-    brand_query = 'SELECT brand_id, brand_name FROM brand'
+    brand_query = 'SELECT brand_id, brand_name FROM brand LIMIT 10'
     results: List[Record] = await connection.fetch(brand_query)
     result_as_dict: List[Dict] = [dict(brand) for brand in results]
     return web.json_response(result_as_dict)
@@ -50,7 +50,7 @@ app.on_startup.append(create_database_pool)  # сопрограмма create_dat
 app.on_cleanup.append(destroy_database_pool)
 
 app.add_routes(routes)
-web.run_app(app)
+web.run_app(app, port=50000)
 
 # запуск скрипта: (env) alex@ubuntu-home:~/py_tmp/asyncio_learn_book$ python -m chapter9._9_2_connect_to_postgres.py
 # в этом случае корректно распознаются абсолютные пути - в данном случае для получения параметров из DATABASE_URL
