@@ -38,9 +38,9 @@ async def destroy_database_pool(app: Application): #B
 
 @routes.get('/brands')
 async def brands(request: Request) -> Response: #C
-    connection: Pool = request.app[DB_KEY]
+    pool: Pool = request.app[DB_KEY]
     brand_query = 'SELECT brand_id, brand_name FROM brand LIMIT 10'
-    results: List[Record] = await connection.fetch(brand_query)
+    results: List[Record] = await pool.fetch(brand_query)
     result_as_dict: List[Dict] = [dict(brand) for brand in results]
     return web.json_response(result_as_dict)
 
