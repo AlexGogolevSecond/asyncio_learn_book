@@ -2,7 +2,7 @@ import asyncpg
 from aiohttp import web
 from aiohttp.web_request import Request
 from aiohttp.web_response import Response
-# from chapter9.listing_9_2_connect_to_postgres import create_database_pool, destroy_database_pool
+# from chapter9.listing_9_2_connect_to_postgres import create_database_pool, destroy_database_pool  # - ТАК НЕ НУЖНО ДЕЛАТЬ!!!
 from asyncpg.pool import Pool
 from asyncpg import Record
 from aiohttp.web_app import Application
