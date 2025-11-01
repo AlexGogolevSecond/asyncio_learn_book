@@ -1,10 +1,11 @@
 from flask import Flask, jsonify
 import psycopg2
+from chapter5.connection import DATABASE_URL
 
 app = Flask(__name__)
 
 conn_info = "dbname=products user=postgres password=password host=127.0.0.1 port=19432"
-db = psycopg2.connect(conn_info)
+db = psycopg2.connect(DATABASE_URL)
 
 
 @app.route('/brands')
