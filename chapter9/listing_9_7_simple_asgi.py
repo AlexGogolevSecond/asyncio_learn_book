@@ -10,3 +10,4 @@ async def application(scope, receive, send):
 
 # напрямую uvicorn не рекомендуется запускать - рекомендуется запускать uvicorn с помощью gunicorn,
 # т.к. в Gunicorn встроена логика автоматического перезапуска рабочих процессов в случае аварии
+# gunicorn -k uvicorn.workers.UvicornWorker chapter9.listing_9_7_simple_asgi:application --bind 0.0.0.0:8000 --workers 4
