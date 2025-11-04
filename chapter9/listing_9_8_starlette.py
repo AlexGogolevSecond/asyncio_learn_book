@@ -15,7 +15,7 @@ async def create_database_pool():
                                            password='password',
                                            database='products',
                                            min_size=6,
-                                           max_size=62)
+                                           max_size=60)
     app.state.DB = pool
 
 
