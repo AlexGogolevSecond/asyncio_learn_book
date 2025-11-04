@@ -9,6 +9,7 @@ class UserCounter(WebSocketEndpoint):
     sockets = []
 
     async def on_connect(self, websocket):  # A
+        """Когда клиент подключается по WebSocket"""
         await websocket.accept()
         UserCounter.sockets.append(websocket)  # ??? почему не self.sockets ???
         await self._send_count()
@@ -18,6 +19,7 @@ class UserCounter(WebSocketEndpoint):
         await self._send_count()
 
     async def on_receive(self, websocket, data):
+        """Когда клиент отправляет сообщение по WebSocket"""
         pass
 
     async def _send_count(self):  # C
