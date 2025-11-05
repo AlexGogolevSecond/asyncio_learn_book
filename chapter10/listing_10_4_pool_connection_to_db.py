@@ -11,17 +11,18 @@ async def create_database_pool(app: Application,
                                user: str,
                                database: str,
                                password: str):
-    pool: Pool = await asyncpg.create_pool(host=host,
-                                           port=port,
-                                           user=user,
-                                           password=password,
-                                           database=database,
-                                           min_size=6,
-                                           max_size=6)
+    pool: Pool = await asyncpg.create_pool(
+        host=host,
+        port=port,
+        user=user,
+        password=password,
+        database=database,
+        min_size=6,
+        max_size=60
+    )
     app[DB_KEY] = pool
 
 
 async def destroy_database_pool(app: Application):
     pool: Pool = app[DB_KEY]
     await pool.close()
-    
