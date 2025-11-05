@@ -24,7 +24,7 @@ class UserCounter(WebSocketEndpoint):
 
     async def _send_count(self):  # C
         if len(UserCounter.sockets) > 0:
-            count_str = str(len(UserCounter.sockets))
+            count_str = str(len(UserCounter.sockets)) + ' lalala'
             task_to_socket = {asyncio.create_task(websocket.send_text(count_str)): websocket
                               for websocket
                               in UserCounter.sockets}
