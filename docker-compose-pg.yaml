@@ -1,7 +1,7 @@
 version: "3.0"
 services:
   db:
-    container_name: "db"
+    container_name: "dbasyncbook"
     #image: postgres:14.1-alpine
     image: postgres:latest
     restart: always
@@ -10,7 +10,7 @@ services:
       - POSTGRES_PASSWORD=password
       - POSTGRES_DB=products
     ports:
-      - "6432:5432"
+      - "66432:5432"
         # первая часть наш комп, вторая - в контейнере - вроде как
     # networks:
     #   - custom
