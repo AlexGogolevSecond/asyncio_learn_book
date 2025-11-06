@@ -1,11 +1,13 @@
+# Сервис избранного
 import functools
 from aiohttp import web
 from aiohttp.web_request import Request
 from aiohttp.web_response import Response
-from listing_10_4_pool_connection_to_db import DB_KEY, create_database_pool, destroy_database_pool
+from chapter10.listing_10_4_pool_connection_to_db import DB_KEY, create_database_pool, destroy_database_pool
+from chapter5.connection import DATABASE_URL
+
 
 routes = web.RouteTableDef()
-
 
 @routes.get('/users/{id}/favorites')
 async def favorites(request: Request) -> Response:
