@@ -1,3 +1,4 @@
+-- работаем с корзиной
 CREATE TABLE user_cart(
     user_id    INT NOT NULL,
     product_id INT NOT NULL

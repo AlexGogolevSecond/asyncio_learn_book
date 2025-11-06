@@ -13,7 +13,7 @@ routes = web.RouteTableDef()
 async def get_inventory(request: Request) -> Response:
     delay: float = random.randint(0, 20) / 10
     await asyncio.sleep(delay)
-    inventory: int = random.randint(0, 100)  # непонятно - зачем, вроде как для примера
+    inventory: int = random.randint(0, 100)  # имитируем получение остатка на складе
     return web.json_response({"inventory": inventory})
 
 
