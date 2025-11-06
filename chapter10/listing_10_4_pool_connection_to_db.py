@@ -1,3 +1,4 @@
+# Создание и уничтожение пула подключений к базе данных
 import asyncpg
 from aiohttp.web_app import Application
 from asyncpg.pool import Pool

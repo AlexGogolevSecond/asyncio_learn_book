@@ -1,3 +1,4 @@
+# Сервис наличия товара на складе
 import asyncio
 import random
 
