@@ -1,3 +1,4 @@
+-- Таблица избранного
 CREATE TABLE user_favorite
 (
     user_id    INT NOT NULL,
