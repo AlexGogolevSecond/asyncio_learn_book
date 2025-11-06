@@ -16,12 +16,7 @@ async def products(request: Request) -> Response:
 
 
 app = web.Application()
-app.on_startup.append(functools.partial(create_database_pool,
-                                        host='127.0.0.1',
-                                        port=19432,
-                                        user='postgres',
-                                        password='password',
-                                        database='products'))
+app.on_startup.append(functools.partial(create_database_pool, database='products'))
 app.on_cleanup.append(destroy_database_pool)
 
 app.add_routes(routes)

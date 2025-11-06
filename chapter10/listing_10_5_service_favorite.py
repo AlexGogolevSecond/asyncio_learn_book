@@ -4,7 +4,6 @@ from aiohttp import web
 from aiohttp.web_request import Request
 from aiohttp.web_response import Response
 from chapter10.listing_10_4_pool_connection_to_db import DB_KEY, create_database_pool, destroy_database_pool
-from chapter5.connection import DATABASE_URL
 
 
 routes = web.RouteTableDef()
@@ -26,12 +25,7 @@ async def favorites(request: Request) -> Response:
 
 
 app = web.Application()
-app.on_startup.append(functools.partial(create_database_pool,
-                                        host='127.0.0.1',
-                                        port=19432,
-                                        user='postgres',
-                                        password='password',
-                                        database='favorites'))
+app.on_startup.append(functools.partial(create_database_pool, database='favorites'))
 app.on_cleanup.append(destroy_database_pool)
 
 app.add_routes(routes)

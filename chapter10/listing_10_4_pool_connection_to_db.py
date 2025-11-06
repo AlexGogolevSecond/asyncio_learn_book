@@ -15,7 +15,7 @@ async def create_database_pool(app: Application, database: str):
     pool: Pool = await asyncpg.create_pool(
         database=database,
         min_size=6,
-        max_size=60,
+        max_size=10,
         **db_url
     )
     app[DB_KEY] = pool
