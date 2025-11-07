@@ -21,10 +21,10 @@ import functools
 
 routes = web.RouteTableDef()
 
-PRODUCT_BASE = 'http://127.0.0.1:8000'
-INVENTORY_BASE = 'http://127.0.0.1:8001'
-FAVORITE_BASE = 'http://127.0.0.1:8002'
-CART_BASE = 'http://127.0.0.1:8003'
+PRODUCT_BASE = 'http://127.0.0.1:8000'  # сервис продуктов SELECT product_id, product_name FROM product
+INVENTORY_BASE = 'http://127.0.0.1:8001'  # сервис складских остатков (без запроса в БД - рандомное значение)
+FAVORITE_BASE = 'http://127.0.0.1:8002'  # сервис избранного SELECT product_id from user_favorite where user_id = $1
+CART_BASE = 'http://127.0.0.1:8003'  # сервис корзины SELECT product_id from user_cart where user_id = $1
 
 
 @routes.get('/products/all')
