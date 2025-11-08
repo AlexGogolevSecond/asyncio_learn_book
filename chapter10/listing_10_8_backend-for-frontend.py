@@ -35,8 +35,8 @@ async def all_products(request: Request) -> Response:
         # cart = asyncio.create_task(session.get(f'{CART_BASE}/users/3/cart'))
 
         product_request = functools.partial(session.get, f'{PRODUCT_BASE}/products')
-        favorite_request = functools.partial(session.get, f'{FAVORITE_BASE}/users/5/favorites')
-        cart_request = functools.partial(session.get, f'{CART_BASE}/users/5/cart')
+        favorite_request = functools.partial(session.get, f'{FAVORITE_BASE}/users/3/favorites')  # user_id = 5, но в таблице нет записи где user_id == 5 - max 3
+        cart_request = functools.partial(session.get, f'{CART_BASE}/users/3/cart')
 
         products = asyncio.create_task(retry(product_request, max_retries=3, timeout=1.5,retry_interval=.1))
         favorites = asyncio.create_task(retry(favorite_request, max_retries=3, timeout=1.5, retry_interval=.1))
@@ -47,7 +47,7 @@ async def all_products(request: Request) -> Response:
 
         if products in pending:  # ???  # если по таймауту выпрыгнули
             [request.cancel() for request in requests]  # отменяем всё
-            return web.json_response({'error': 'Ошибка связи с сервисом продуктов. Запрос к сервису товаров завершился по таймауту'}, status=504)
+            return web.json_response({'error': 'Ошибка связи с сервисом продуктов. Запрос к сервису товаров завершился по таймауту или ещё по какой-то ерунде'}, status=504)
         elif products in done and products.exception() is not None:
             [request.cancel() for request in requests]
             logging.exception('Server error reaching product service. Типа по каким то товарам что-то не то с запросами (exception)', exc_info=products.exception())
@@ -78,11 +78,9 @@ async def get_products_with_inventory(session: ClientSession, product_response) 
     def create_product_record(product_id: int, inventory: Optional[int]) -> Dict:
         return {'product_id': product_id, 'inventory': inventory}
 
-    inventory_tasks_to_product_id = {
-        get_inventory(session, product['product_id']): product['product_id'] for product in product_response
-    }  # формируем словарь
+    inventory_tasks_to_product_id = {get_inventory(session, product['product_id']): product['product_id'] for product in product_response}  # формируем словарь
 
-    inventory_done, inventory_pending = await asyncio.wait(inventory_tasks_to_product_id.keys(), timeout=1.0)
+    inventory_done, inventory_pending = await asyncio.wait(inventory_tasks_to_product_id.keys(), timeout=1.0)  # тут непонято - что за keys? - это коллекция тасок для asyncio
 
     product_results = []
 
@@ -110,7 +108,7 @@ async def get_response_item_count(task: Task,
                                   pending: Set[Awaitable],
                                   error_msg: str) -> Optional[int]:
     if task in done and task.exception() is None:
-        return len(await task.result().json())
+        return len(await task.result().json())  # возвращаем количество(!) элементов в корзине или избранном
     elif task in pending:
         task.cancel()
     else:
