@@ -10,7 +10,7 @@ services:
       - POSTGRES_PASSWORD=password
       - POSTGRES_DB=products
     ports:
-      - "66432:5432"
+      - "46432:46432"  # в контейнере не стандартный порт 5432, а 46432
         # первая часть наш комп, вторая - в контейнере - вроде как
     # networks:
     #   - custom
